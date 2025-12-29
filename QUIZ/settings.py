@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'accounts',
+    'app_quiz',
     'rest_framework.authtoken',
     'rest_framework',
 
@@ -53,6 +54,15 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# Uncomment the following lines when deploying to production with HTTPS
+
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# CSRF_TRUSTED_ORIGINS = [
+#     'https://mcqsolvear.com',
+#     'https://www.mcqsolvear.com',
+# ]
+
 
 ROOT_URLCONF = 'QUIZ.urls'
 
