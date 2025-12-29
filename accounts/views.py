@@ -40,3 +40,5 @@ def login(request):
 
     token, created = Token.objects.get_or_create(user=user)
     return Response({"token": token.key, "name": user.first_name}, status=status.HTTP_200_OK)
+
+
