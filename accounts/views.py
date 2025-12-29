@@ -5,6 +5,7 @@ from rest_framework.authtoken.models import Token
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
+from .models import UserData
 
 @api_view(['POST'])
 def signup(request):
@@ -20,6 +21,7 @@ def signup(request):
         return Response({"error": "Email already exists"}, status=status.HTTP_400_BAD_REQUEST)
 
     user = User.objects.create_user(username=email, email=email, password=password, first_name=name)
+    UserData.objects.create(user=user) 
     token = Token.objects.create(user=user)
 
     return Response({"token": token.key, "name": name}, status=status.HTTP_201_CREATED)
