@@ -61,7 +61,7 @@ def get_quiz(request):
         })
 
         # mark as seen
-        quiz.seen_by.add(user)
+        #quiz.seen_by.add(user)
 
     return Response(
         {
