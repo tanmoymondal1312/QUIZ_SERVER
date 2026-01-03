@@ -44,3 +44,39 @@ def login(request):
     return Response({"token": token.key, "name": user.first_name}, status=status.HTTP_200_OK)
 
 
+@api_view(['POST'])
+def get_user_full_data(request):
+    token_key = request.data.get('token')
+
+    if not token_key:
+        return Response(
+            {"error": "token is required"},
+            status=status.HTTP_400_BAD_REQUEST
+        )
+
+    # 🔐 Verify token
+    try:
+        token = Token.objects.get(key=token_key)
+        user = token.user
+    except Token.DoesNotExist:
+        return Response(
+            {"error": "Invalid or expired token"},
+            status=status.HTTP_401_UNAUTHORIZED
+        )
+
+    profile = user.profile  # UserData via related_name
+
+    failed_to_solve = profile.mcq_completed - profile.mcq_solved
+    joined_at = user.date_joined.strftime("%d %b %Y") 
+
+    return Response(
+        {
+            "name": user.first_name,
+            "email": user.email,
+            "joined_at": joined_at,
+            "level": profile.level,
+            "mcq_solved": profile.mcq_solved,
+            "failed_to_solve": failed_to_solve,
+        },
+        status=status.HTTP_200_OK
+    )

@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import signup, login
+from .views import get_user_full_data, signup, login
 from .views_data_sender import get_user_level,get_quiz_perfomance, leaderboard,uquiz_seen,update_user_mcq_solved_mcq_completed
 
 urlpatterns = [
@@ -10,5 +10,6 @@ urlpatterns = [
     path('api/put-mark-as-seen', uquiz_seen),
     path('api/update-mcq-states', update_user_mcq_solved_mcq_completed),
     path('api/leaderboard', leaderboard),
+    path('api/get-user-full-data', get_user_full_data),
 
 ]
