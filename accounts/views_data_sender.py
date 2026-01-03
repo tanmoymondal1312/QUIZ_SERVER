@@ -150,3 +150,54 @@ def update_user_mcq_solved_mcq_completed(request):
         },
         status=status.HTTP_200_OK
     )
+
+
+
+
+@api_view(['POST'])
+def leaderboard(request):
+    token_key = request.data.get('token')
+
+    # 🔐 Verify token
+    try:
+        token = Token.objects.get(key=token_key)
+        user = token.user
+    except Token.DoesNotExist:
+        return Response(
+            {"error": "Invalid or expired token"},
+            status=status.HTTP_401_UNAUTHORIZED
+        )
+
+    # 🏆 Top 50 users by mcq_solved
+    top_users_qs = (
+        UserData.objects
+        .select_related('user')
+        .order_by('-mcq_solved', 'user__id')[:50]
+    )
+
+    leaderboard_data = []
+    for index, u in enumerate(top_users_qs, start=1):
+        leaderboard_data.append({
+            "rank": index,
+            "id": u.user.id,
+            "name": u.user.first_name,
+            "mcq_solved": u.mcq_solved
+        })
+
+    # 📍 Current user rank
+    user_mcq_solved = user.profile.mcq_solved
+
+    user_rank = (
+        UserData.objects
+        .filter(mcq_solved__gt=user_mcq_solved)
+        .count() + 1
+    )
+
+    return Response(
+        {
+            "leaderboard": leaderboard_data,
+            "user_rank": user_rank,
+            "user_mcq_solved": user_mcq_solved
+        },
+        status=status.HTTP_200_OK
+    )
