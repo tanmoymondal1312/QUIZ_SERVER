@@ -1,9 +1,13 @@
 import random
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from django.http import JsonResponse
+
 from rest_framework import status
 from rest_framework.authtoken.models import Token
 from .models import Quiz, QuizCategory
+from .models import AppUpdate
+
 
 
 @api_view(['POST'])
@@ -114,3 +118,27 @@ def get_quiz(request):
         },
         status=status.HTTP_200_OK
     )
+
+
+
+
+
+
+
+def check_app_update(request):
+    """
+    Returns latest app update status
+    """
+    update = AppUpdate.objects.last()
+
+    if not update:
+        return JsonResponse({
+            "is_update": False,
+            "link": ""
+        })
+
+    data = {
+        "is_update": update.is_update,
+        "link": update.link,
+    }
+    return JsonResponse(data)

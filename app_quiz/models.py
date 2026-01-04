@@ -65,3 +65,16 @@ class Quiz(models.Model):
 
     def __str__(self):
         return self.question[:50]
+
+
+
+class AppUpdate(models.Model):
+    link = models.CharField(max_length=1000, unique=True)
+    is_update = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.link
+
+

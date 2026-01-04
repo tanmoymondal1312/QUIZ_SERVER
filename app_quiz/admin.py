@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Quiz, QuizCategory
+from .models import AppUpdate, Quiz, QuizCategory
 
 
 @admin.register(QuizCategory)
@@ -45,3 +45,11 @@ class QuizAdmin(admin.ModelAdmin):
 
     readonly_fields = ('created_at', 'updated_at')
     filter_horizontal = ('seen_by',)
+
+
+
+@admin.register(AppUpdate)
+class AppUpdateAdmin(admin.ModelAdmin):
+    list_display = ("link", "is_update", "created_at")
+    list_filter = ("is_update",)
+    search_fields = ("link",)

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'accounts',
     'app_quiz',
+    'view',
     'rest_framework.authtoken',
     'rest_framework',
 
