@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django_extensions',
     'accounts',
     'app_quiz',
-    'view',
     'rest_framework.authtoken',
     'rest_framework',
 
@@ -125,6 +124,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+
+# Directories where Django will look for static files (in addition to app static folders)
+STATICFILES_DIRS = [
+    BASE_DIR / "static",  # Your project-level static folder
+]
+
+# Directory where collectstatic will collect static files for deployment
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
@@ -238,9 +245,10 @@ WSGI_APPLICATION = 'QUIZ.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '/home/username/databases/quiz_db.sqlite3',
+        'NAME': '/home/tanmoy/database/quiz_db.sqlite3',
     }
 }
+
 
 
 

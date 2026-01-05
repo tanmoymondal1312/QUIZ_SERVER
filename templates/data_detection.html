@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <!-- Essential Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Detection Request | MCQ Solvear - Data Privacy Management</title>
+    <meta name="description" content="Submit data detection requests for MCQ Solvear. Learn how to access, modify, or delete your personal data in our educational quiz application.">
+    <meta name="keywords" content="data detection request, GDPR, data privacy, personal data access, data deletion, data protection, MCQ Solvear privacy">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Data Detection Request | MCQ Solvear">
+    <meta property="og:description" content="Submit requests to access, modify, or delete your personal data from MCQ Solvear">
+    <meta property="og:url" content="https://mcqsolvear.com/data-detection">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="{% static 'app_icon.webp' %}">
+    <meta property="og:site_name" content="MCQ Solvear">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Data Detection Request | MCQ Solvear">
+    <meta name="twitter:description" content="Manage your data privacy with MCQ Solvear's data detection request system">
+    <meta name="twitter:image" content="{% static 'app_icon.webp' %}">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://mcqsolvear.com/data-detection">
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'app_icon.webp' %}">
+    <link rel="icon" type="image/webp" sizes="32x32" href="{% static 'app_icon.webp' %}">
+    <link rel="icon" type="image/webp" sizes="16x16" href="{% static 'app_icon.webp' %}">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <meta name="author" content="Solvear">
+    <meta name="theme-color" content="#4361ee">
+    
+    <!-- Structured Data / JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Data Detection Request - MCQ Solvear",
+        "description": "Data privacy management and request submission for MCQ Solvear users",
+        "url": "https://mcqsolvear.com/data-detection",
+        "datePublished": "2024-01-01",
+        "dateModified": "2024-01-01",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Solvear",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://mcqsolvear.com{% static 'app_icon.webp' %}"
+            }
+        },
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://mcqsolvear.com"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Data Detection Request",
+                    "item": "https://mcqsolvear.com/data-detection"
+                }
+            ]
+        }
+    }
+    </script>
+    
+    <!-- CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary-color: #7209b7;
+            --accent-color: #f72585;
+            --text-color: #2b2d42;
+            --text-light: #8d99ae;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+        
+        .section-divider {
+            height: 3px;
+            width: 60px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+        
+        .privacy-badge {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            display: inline-block;
+        }
+        
+        .step-indicator {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+        
+        .data-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid;
+            transition: all 0.3s ease;
+        }
+        
+        .data-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .data-card.access {
+            border-left-color: #10b981;
+        }
+        
+        .data-card.correction {
+            border-left-color: #3b82f6;
+        }
+        
+        .data-card.deletion {
+            border-left-color: #ef4444;
+        }
+        
+        .data-card.restriction {
+            border-left-color: #f59e0b;
+        }
+        
+        .data-card.portability {
+            border-left-color: #8b5cf6;
+        }
+        
+        .data-card.objection {
+            border-left-color: #ec4899;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+        }
+        
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .radio-option {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .radio-input {
+            display: none;
+        }
+        
+        .radio-label {
+            display: block;
+            padding: 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .radio-input:checked + .radio-label {
+            border-color: var(--primary-color);
+            background: rgba(67, 97, 238, 0.05);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e5e7eb;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+        
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            display: inline-block;
+        }
+        
+        .status-pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        
+        .status-processing {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+        
+        .status-completed {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        
+        .status-rejected {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        
+        .verification-banner {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px dashed #0ea5e9;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .confirmation-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .confirmation-modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        
+        @media (max-width: 768px) {
+            .radio-group {
+                flex-direction: column;
+            }
+            
+            .radio-option {
+                min-width: 100%;
+            }
+            
+            .timeline {
+                padding-left: 1.5rem;
+            }
+            
+            .timeline::before {
+                left: 4px;
+            }
+            
+            .timeline-item::before {
+                left: -1.5rem;
+                width: 12px;
+                height: 12px;
+            }
+        }
+        
+        .required-field::after {
+            content: ' *';
+            color: #ef4444;
+        }
+        
+        .loading-spinner {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border: 3px solid #e5e7eb;
+            border-top: 3px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .data-types-list {
+            columns: 2;
+            column-gap: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .data-types-list {
+                columns: 1;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-blue-50 min-h-screen">
+    <!-- Navigation -->
+    {% include 'partial/navbar.html' %}
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+       
+        <!-- Hero Section -->
+        <section class="py-12 bg-gradient-to-r from-blue-500 to-purple-600 text-white">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4 animate-fade-in">
+                        Data Detection Request
+                    </h1>
+                    <p class="text-xl opacity-90 mb-4">
+                        Exercise your data privacy rights with MCQ Solvear
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-2 mb-6">
+                        <span class="privacy-badge bg-white/20 backdrop-blur-sm">
+                            <i class="fas fa-shield-alt mr-1"></i> GDPR Compliant
+                        </span>
+                        <span class="privacy-badge bg-white/20 backdrop-blur-sm">
+                            <i class="fas fa-lock mr-1"></i> Secure Processing
+                        </span>
+                        <span class="privacy-badge bg-white/20 backdrop-blur-sm">
+                            <i class="fas fa-clock mr-1"></i> 30-Day Response
+                        </span>
+                    </div>
+                    <p class="text-lg max-w-3xl mx-auto opacity-80">
+                        Submit requests to access, correct, delete, or transfer your personal data in accordance with privacy regulations.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <section class="py-12 md:py-16">
+            <div class="container mx-auto px-4">
+                <div class="max-w-6xl mx-auto">
+                    <!-- Introduction -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-8 animate-fade-in">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                            <i class="fas fa-info-circle text-primary-color mr-2"></i>
+                            About Data Detection Requests
+                        </h2>
+                        <p class="text-gray-600 mb-4">
+                            Under data protection regulations like GDPR, CCPA, and others, you have specific rights regarding your personal data. This portal allows you to exercise these rights in relation to your data stored by MCQ Solvear.
+                        </p>
+                        <div class="grid md:grid-cols-2 gap-6 mt-6">
+                            <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
+                                <h3 class="font-bold text-gray-800 mb-2 flex items-center">
+                                    <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                    What We Offer
+                                </h3>
+                                <ul class="text-gray-600 text-sm space-y-1">
+                                    <li>Free data access requests</li>
+                                    <li>Transparent processing timeline</li>
+                                    <li>Secure verification process</li>
+                                    <li>Multiple request types available</li>
+                                    <li>Email confirmation and updates</li>
+                                </ul>
+                            </div>
+                            <div class="bg-purple-50 border border-purple-200 rounded-xl p-4">
+                                <h3 class="font-bold text-gray-800 mb-2 flex items-center">
+                                    <i class="fas fa-clock text-blue-500 mr-2"></i>
+                                    Processing Timeline
+                                </h3>
+                                <ul class="text-gray-600 text-sm space-y-1">
+                                    <li>Initial acknowledgment: 1-2 business days</li>
+                                    <li>Verification: 1-3 business days</li>
+                                    <li>Complete response: Within 30 days</li>
+                                    <li>Complex requests: May take up to 60 days</li>
+                                    <li>Notifications at each stage</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Request Types -->
+                    <div class="mb-12">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">
+                            Available Request Types
+                        </h2>
+                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <!-- Access Request -->
+                            <div class="data-card access">
+                                <div class="flex items-center mb-3">
+                                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-3">
+                                        <i class="fas fa-eye text-green-600 text-xl"></i>
+                                    </div>
+                                    <h3 class="font-bold text-gray-800">Access Request</h3>
+                                </div>
+                                <p class="text-gray-600 text-sm mb-3">
+                                    Request a copy of all personal data we hold about you in a structured, commonly used format.
+                                </p>
+                                <div class="text-xs text-gray-500">
+                                    <i class="fas fa-clock mr-1"></i> Processed within 30 days
+                                </div>
+                            </div>
+
+                            <!-- Correction Request -->
+                            <div class="data-card correction">
+                                <div class="flex items-center mb-3">
+                                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
+                                        <i class="fas fa-edit text-blue-600 text-xl"></i>
+                                    </div>
+                                    <h3 class="font-bold text-gray-800">Correction Request</h3>
+                                </div>
+                                <p class="text-gray-600 text-sm mb-3">
+                                    Request correction of inaccurate or incomplete personal data we hold about you.
+                                </p>
+                                <div class="text-xs text-gray-500">
+                                    <i class="fas fa-clock mr-1"></i> Processed within 14 days
+                                </div>
+                            </div>
+
+                            <!-- Deletion Request -->
+                            <div class="data-card deletion">
+                                <div class="flex items-center mb-3">
+                                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mr-3">
+                                        <i class="fas fa-trash-alt text-red-600 text-xl"></i>
+                                    </div>
+                                    <h3 class="font-bold text-gray-800">Deletion Request</h3>
+                                </div>
+                                <p class="text-gray-600 text-sm mb-3">
+                                    Request deletion of your personal data ("right to be forgotten") under certain conditions.
+                                </p>
+                                <div class="text-xs text-gray-500">
+                                    <i class="fas fa-clock mr-1"></i> Processed within 30 days
+                                </div>
+                            </div>
+
+                            <!-- Restriction Request -->
+                            <div class="data-card restriction">
+                                <div class="flex items-center mb-3">
+                                    <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mr-3">
+                                        <i class="fas fa-pause text-yellow-600 text-xl"></i>
+                                    </div>
+                                    <h3 class="font-bold text-gray-800">Restriction Request</h3>
+                                </div>
+                                <p class="text-gray-600 text-sm mb-3">
+                                    Request restriction of processing your personal data under certain circumstances.
+                                </p>
+                                <div class="text-xs text-gray-500">
+                                    <i class="fas fa-clock mr-1"></i> Processed within 7 days
+                                </div>
+                            </div>
+
+                            <!-- Portability Request -->
+                            <div class="data-card portability">
+                                <div class="flex items-center mb-3">
+                                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-3">
+                                        <i class="fas fa-exchange-alt text-purple-600 text-xl"></i>
+                                    </div>
+                                    <h3 class="font-bold text-gray-800">Portability Request</h3>
+                                </div>
+                                <p class="text-gray-600 text-sm mb-3">
+                                    Request your personal data in a structured, machine-readable format for transfer.
+                                </p>
+                                <div class="text-xs text-gray-500">
+                                    <i class="fas fa-clock mr-1"></i> Processed within 30 days
+                                </div>
+                            </div>
+
+                            <!-- Objection Request -->
+                            <div class="data-card objection">
+                                <div class="flex items-center mb-3">
+                                    <div class="w-12 h-12 bg-pink-100 rounded-lg flex items-center justify-center mr-3">
+                                        <i class="fas fa-ban text-pink-600 text-xl"></i>
+                                    </div>
+                                    <h3 class="font-bold text-gray-800">Objection Request</h3>
+                                </div>
+                                <p class="text-gray-600 text-sm mb-3">
+                                    Object to processing of your personal data for specific purposes like marketing.
+                                </p>
+                                <div class="text-xs text-gray-500">
+                                    <i class="fas fa-clock mr-1"></i> Processed within 21 days
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Request Form -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-12">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">
+                            Submit Your Request
+                        </h2>
+                        
+                        <div class="verification-banner mb-8">
+                            <i class="fas fa-user-shield text-4xl text-blue-500 mb-4"></i>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Identity Verification Required</h3>
+                            <p class="text-gray-600">
+                                To protect your privacy, we require verification of your identity before processing any data request. We'll send a verification link to your registered email address.
+                            </p>
+                        </div>
+
+                        <form id="dataRequestForm" class="max-w-3xl mx-auto">
+                            <!-- Request Type -->
+                            <div class="form-group">
+                                <label class="form-label required-field">Request Type</label>
+                                <div class="radio-group">
+                                    <div class="radio-option">
+                                        <input type="radio" id="type-access" name="request_type" value="access" class="radio-input" required>
+                                        <label for="type-access" class="radio-label">
+                                            <div class="font-medium text-gray-800">Access Request</div>
+                                            <div class="text-sm text-gray-600 mt-1">Get a copy of your data</div>
+                                        </label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="type-correction" name="request_type" value="correction" class="radio-input">
+                                        <label for="type-correction" class="radio-label">
+                                            <div class="font-medium text-gray-800">Correction Request</div>
+                                            <div class="text-sm text-gray-600 mt-1">Correct inaccurate data</div>
+                                        </label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="type-deletion" name="request_type" value="deletion" class="radio-input">
+                                        <label for="type-deletion" class="radio-label">
+                                            <div class="font-medium text-gray-800">Deletion Request</div>
+                                            <div class="text-sm text-gray-600 mt-1">Delete your data</div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Personal Information -->
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="form-group">
+                                    <label for="full_name" class="form-label required-field">Full Name</label>
+                                    <input type="text" id="full_name" name="full_name" class="form-input" required placeholder="As registered in your account">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="form-label required-field">Email Address</label>
+                                    <input type="email" id="email" name="email" class="form-input" required placeholder="Your registered email">
+                                </div>
+                            </div>
+
+                            <!-- User ID (Optional) -->
+                            <div class="form-group">
+                                <label for="user_id" class="form-label">
+                                    User ID (Optional)
+                                    <span class="text-sm text-gray-500 ml-1">Found in app settings</span>
+                                </label>
+                                <input type="text" id="user_id" name="user_id" class="form-input" placeholder="e.g., USR-12345">
+                            </div>
+
+                            <!-- Additional Details -->
+                            <div class="form-group">
+                                <label for="details" class="form-label">Additional Details</label>
+                                <textarea id="details" name="details" class="form-input" rows="4" placeholder="Please provide any additional information that might help us process your request..."></textarea>
+                            </div>
+
+                            <!-- Data Types -->
+                            <div class="form-group">
+                                <label class="form-label">Specific Data Types (Optional)</label>
+                                <div class="bg-gray-50 rounded-lg p-4">
+                                    <div class="data-types-list">
+                                        <div class="flex items-center mb-2">
+                                            <input type="checkbox" id="data-profile" name="data_types[]" value="profile" class="mr-2">
+                                            <label for="data-profile" class="text-gray-700">Profile Information</label>
+                                        </div>
+                                        <div class="flex items-center mb-2">
+                                            <input type="checkbox" id="data-quiz" name="data_types[]" value="quiz" class="mr-2">
+                                            <label for="data-quiz" class="text-gray-700">Quiz Scores & Progress</label>
+                                        </div>
+                                        <div class="flex items-center mb-2">
+                                            <input type="checkbox" id="data-device" name="data_types[]" value="device" class="mr-2">
+                                            <label for="data-device" class="text-gray-700">Device Information</label>
+                                        </div>
+                                        <div class="flex items-center mb-2">
+                                            <input type="checkbox" id="data-usage" name="data_types[]" value="usage" class="mr-2">
+                                            <label for="data-usage" class="text-gray-700">Usage Analytics</label>
+                                        </div>
+                                        <div class="flex items-center mb-2">
+                                            <input type="checkbox" id="data-payment" name="data_types[]" value="payment" class="mr-2">
+                                            <label for="data-payment" class="text-gray-700">Payment Information</label>
+                                        </div>
+                                        <div class="flex items-center mb-2">
+                                            <input type="checkbox" id="data-communication" name="data_types[]" value="communication" class="mr-2">
+                                            <label for="data-communication" class="text-gray-700">Communication History</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Format Preference -->
+                            <div class="form-group">
+                                <label class="form-label">Delivery Format (if applicable)</label>
+                                <div class="radio-group">
+                                    <div class="radio-option">
+                                        <input type="radio" id="format-email" name="delivery_format" value="email" class="radio-input">
+                                        <label for="format-email" class="radio-label">
+                                            <i class="fas fa-envelope text-blue-500 mr-2"></i>
+                                            <span>Email</span>
+                                        </label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="format-download" name="delivery_format" value="download" class="radio-input">
+                                        <label for="format-download" class="radio-label">
+                                            <i class="fas fa-download text-green-500 mr-2"></i>
+                                            <span>Download Link</span>
+                                        </label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="format-post" name="delivery_format" value="post" class="radio-input">
+                                        <label for="format-post" class="radio-label">
+                                            <i class="fas fa-mail-bulk text-purple-500 mr-2"></i>
+                                            <span>Physical Mail</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Terms Agreement -->
+                            <div class="form-group">
+                                <div class="flex items-start">
+                                    <input type="checkbox" id="terms_agreement" name="terms_agreement" class="mt-1 mr-2" required>
+                                    <label for="terms_agreement" class="text-gray-700">
+                                        I confirm that I am the data subject or an authorized representative of the data subject. I understand that false or misleading statements may constitute an offense.
+                                        <span class="text-red-500">*</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="flex items-start">
+                                    <input type="checkbox" id="privacy_agreement" name="privacy_agreement" class="mt-1 mr-2" required>
+                                    <label for="privacy_agreement" class="text-gray-700">
+                                        I have read and agree to the 
+                                        <a href="{% url 'privacy_policy' %}" class="text-primary-color hover:underline">Privacy Policy</a>
+                                        and understand how my data will be processed for this request.
+                                        <span class="text-red-500">*</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="text-center mt-8">
+                                <button type="submit" class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-3 rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center mx-auto">
+                                    <i class="fas fa-paper-plane mr-2"></i>
+                                    Submit Request
+                                </button>
+                                <p class="text-sm text-gray-500 mt-4">
+                                    You'll receive a confirmation email with your request ID and next steps.
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Processing Timeline -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-12">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">
+                            Request Processing Timeline
+                        </h2>
+                        <div class="timeline max-w-3xl mx-auto">
+                            <div class="timeline-item">
+                                <h3 class="font-bold text-gray-800 mb-2">Submission & Verification</h3>
+                                <p class="text-gray-600 mb-2">We receive your request and verify your identity through email confirmation.</p>
+                                <span class="status-badge status-pending">Typically 1-3 days</span>
+                            </div>
+                            <div class="timeline-item">
+                                <h3 class="font-bold text-gray-800 mb-2">Request Assessment</h3>
+                                <p class="text-gray-600 mb-2">We assess the scope and complexity of your request, checking for any exemptions.</p>
+                                <span class="status-badge status-processing">Typically 3-7 days</span>
+                            </div>
+                            <div class="timeline-item">
+                                <h3 class="font-bold text-gray-800 mb-2">Data Collection</h3>
+                                <p class="text-gray-600 mb-2">We gather all relevant data from our systems based on your request type.</p>
+                                <span class="status-badge status-processing">Typically 7-14 days</span>
+                            </div>
+                            <div class="timeline-item">
+                                <h3 class="font-bold text-gray-800 mb-2">Preparation & Delivery</h3>
+                                <p class="text-gray-600 mb-2">We prepare your data in the requested format and securely deliver it to you.</p>
+                                <span class="status-badge status-processing">Typically 14-30 days</span>
+                            </div>
+                            <div class="timeline-item">
+                                <h3 class="font-bold text-gray-800 mb-2">Request Completed</h3>
+                                <p class="text-gray-600 mb-2">You receive confirmation that your request has been fully processed.</p>
+                                <span class="status-badge status-completed">Request Closed</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">
+                            Frequently Asked Questions
+                        </h2>
+                        <div class="space-y-6 max-w-3xl mx-auto">
+                            <div class="border-b border-gray-200 pb-6">
+                                <h3 class="font-bold text-gray-800 mb-2 flex items-center">
+                                    <i class="fas fa-question-circle text-primary-color mr-2"></i>
+                                    How long does it take to process a request?
+                                </h3>
+                                <p class="text-gray-600">
+                                    We aim to respond to all requests within 30 calendar days. Complex requests or those requiring additional verification may take up to 60 days, but we'll keep you informed throughout the process.
+                                </p>
+                            </div>
+                            <div class="border-b border-gray-200 pb-6">
+                                <h3 class="font-bold text-gray-800 mb-2 flex items-center">
+                                    <i class="fas fa-question-circle text-primary-color mr-2"></i>
+                                    Is there a fee for data requests?
+                                </h3>
+                                <p class="text-gray-600">
+                                    No, data detection requests are free of charge. However, we may charge a reasonable fee if your request is manifestly unfounded, excessive, or repetitive.
+                                </p>
+                            </div>
+                            <div class="border-b border-gray-200 pb-6">
+                                <h3 class="font-bold text-gray-800 mb-2 flex items-center">
+                                    <i class="fas fa-question-circle text-primary-color mr-2"></i>
+                                    Can someone else submit a request on my behalf?
+                                </h3>
+                                <p class="text-gray-600">
+                                    Yes, authorized representatives can submit requests. They'll need to provide proof of authorization and go through the same verification process.
+                                </p>
+                            </div>
+                            <div class="border-b border-gray-200 pb-6">
+                                <h3 class="font-bold text-gray-800 mb-2 flex items-center">
+                                    <i class="fas fa-question-circle text-primary-color mr-2"></i>
+                                    What if I don't remember my user ID?
+                                </h3>
+                                <p class="text-gray-600">
+                                    That's okay. You can find your User ID in the app settings under "Account Information" or simply provide your registered email address. We can locate your account using your email.
+                                </p>
+                            </div>
+                            <div class="pb-6">
+                                <h3 class="font-bold text-gray-800 mb-2 flex items-center">
+                                    <i class="fas fa-question-circle text-primary-color mr-2"></i>
+                                    Can I cancel or modify my request?
+                                </h3>
+                                <p class="text-gray-600">
+                                    Yes, you can cancel or modify your request by replying to the confirmation email we send you. Please include your request ID (provided in the confirmation email) for reference.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="py-12 bg-gradient-to-r from-blue-50 to-purple-50">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6">
+                        Need Help With Your Request?
+                    </h2>
+                    <p class="text-gray-600 mb-8 max-w-2xl mx-auto">
+                        If you have questions about the data detection process or need assistance with your request, our privacy team is here to help.
+                    </p>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="bg-white rounded-xl p-6 shadow-lg">
+                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-envelope text-blue-600 text-xl"></i>
+                            </div>
+                            <h3 class="font-bold text-gray-800 mb-2">Email Support</h3>
+                            <p class="text-gray-600 text-sm">palashrangder05@gmail.com</p>
+                        </div>
+                        <div class="bg-white rounded-xl p-6 shadow-lg">
+                            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-clock text-purple-600 text-xl"></i>
+                            </div>
+                            <h3 class="font-bold text-gray-800 mb-2">Response Time</h3>
+                            <p class="text-gray-600 text-sm">2-3 business days</p>
+                        </div>
+                        <div class="bg-white rounded-xl p-6 shadow-lg">
+                            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-file-alt text-green-600 text-xl"></i>
+                            </div>
+                            <h3 class="font-bold text-gray-800 mb-2">Documentation</h3>
+                            <a href="{% url 'privacy_policy' %}" class="text-primary-color text-sm hover:underline">Privacy Policy</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmationModal" class="confirmation-modal">
+        <div class="modal-content">
+            <div class="text-center">
+                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-check text-green-600 text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Request Submitted Successfully!</h3>
+                <p class="text-gray-600 mb-6">
+                    We've received your data detection request. A confirmation email has been sent to <span id="confirmationEmail" class="font-medium">your.email@example.com</span> with your request ID and next steps.
+                </p>
+                <div class="bg-gray-50 rounded-lg p-4 mb-6 text-left">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-gray-600">Request ID:</span>
+                        <span id="requestId" class="font-mono font-bold text-gray-800">REQ-2024-00123</span>
+                    </div>
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-gray-600">Type:</span>
+                        <span id="requestType" class="font-medium text-gray-800">Access Request</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-gray-600">Submitted:</span>
+                        <span id="submissionTime" class="font-medium text-gray-800">Just now</span>
+                    </div>
+                </div>
+                <div class="space-y-3">
+                    <button onclick="closeConfirmation()" class="w-full bg-primary-color text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition-colors font-medium">
+                        <i class="fas fa-check mr-2"></i> Got It
+                    </button>
+                    <button onclick="printConfirmation()" class="w-full bg-gray-100 text-gray-800 px-6 py-3 rounded-lg hover:bg-gray-200 transition-colors font-medium">
+                        <i class="fas fa-print mr-2"></i> Print Confirmation
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    {% include 'partial/footer.html' %}
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Form submission
+            const form = document.getElementById('dataRequestForm');
+            const modal = document.getElementById('confirmationModal');
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const formData = new FormData(form);
+                const email = formData.get('email');
+                const requestType = formData.get('request_type');
+                
+                // Generate request ID
+                const requestId = 'REQ-' + new Date().getFullYear() + '-' + 
+                    Math.floor(10000 + Math.random() * 90000);
+                
+                // Update modal content
+                document.getElementById('confirmationEmail').textContent = email;
+                document.getElementById('requestId').textContent = requestId;
+                document.getElementById('requestType').textContent = 
+                    requestType === 'access' ? 'Access Request' :
+                    requestType === 'correction' ? 'Correction Request' :
+                    requestType === 'deletion' ? 'Deletion Request' : 'Data Request';
+                
+                // Show modal
+                modal.classList.add('active');
+                
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // Radio button styling
+            document.querySelectorAll('.radio-input').forEach(input => {
+                input.addEventListener('change', function() {
+                    // Remove all checked styles
+                    document.querySelectorAll('.radio-input').forEach(otherInput => {
+                        if (otherInput !== this) {
+                            otherInput.checked = false;
+                        }
+                    });
+                });
+            });
+        });
+        
+        function closeConfirmation() {
+            document.getElementById('confirmationModal').classList.remove('active');
+            // Reset form
+            document.getElementById('dataRequestForm').reset();
+        }
+        
+        function printConfirmation() {
+            const printContent = `
+                <html>
+                <head>
+                    <title>Data Request Confirmation - MCQ Solvear</title>
+                    <style>
+                        body { font-family: Arial, sans-serif; padding: 20px; }
+                        .header { text-align: center; margin-bottom: 30px; }
+                        .logo { font-size: 24px; font-weight: bold; color: #4361ee; margin-bottom: 10px; }
+                        .details { margin: 20px 0; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
+                        .detail-row { display: flex; justify-content: space-between; margin-bottom: 10px; }
+                        .footer { margin-top: 30px; font-size: 12px; color: #666; text-align: center; }
+                    </style>
+                </head>
+                <body>
+                    <div class="header">
+                        <div class="logo">MCQ Solvear</div>
+                        <h1>Data Request Confirmation</h1>
+                        <p>Request submitted: ${new Date().toLocaleString()}</p>
+                    </div>
+                    <div class="details">
+                        <div class="detail-row">
+                            <span>Request ID:</span>
+                            <strong>${document.getElementById('requestId').textContent}</strong>
+                        </div>
+                        <div class="detail-row">
+                            <span>Request Type:</span>
+                            <strong>${document.getElementById('requestType').textContent}</strong>
+                        </div>
+                        <div class="detail-row">
+                            <span>Submitted Email:</span>
+                            <strong>${document.getElementById('confirmationEmail').textContent}</strong>
+                        </div>
+                        <div class="detail-row">
+                            <span>Status:</span>
+                            <strong style="color: #10b981;">Submitted - Awaiting Verification</strong>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <p>Please keep this confirmation for your records.</p>
+                        <p>MCQ Solvear - Data Privacy Team</p>
+                        <p>Email: palashrangder05@gmail.com</p>
+                    </div>
+                </body>
+                </html>
+            `;
+            
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(printContent);
+            printWindow.document.close();
+            printWindow.focus();
+            setTimeout(() => {
+                printWindow.print();
+                printWindow.close();
+            }, 250);
+        }
+    </script>
+</body>
+</html>

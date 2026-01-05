@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <!-- Essential Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service | MCQ Solvear - Educational Quiz App</title>
+    <meta name="description" content="Terms of Service for MCQ Solvear. Read our terms, conditions, and user agreement for using our educational quiz application.">
+    <meta name="keywords" content="MCQ Solvear terms, terms of service, user agreement, quiz app terms, educational app terms, Solvear conditions">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Terms of Service | MCQ Solvear">
+    <meta property="og:description" content="Terms and conditions for using MCQ Solvear educational quiz application">
+    <meta property="og:url" content="https://mcqsolvear.com/terms">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="{% static 'app_icon.webp' %}">
+    <meta property="og:site_name" content="MCQ Solvear">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Terms of Service | MCQ Solvear">
+    <meta name="twitter:description" content="Read our terms and conditions for using MCQ Solvear quiz app">
+    <meta name="twitter:image" content="{% static 'app_icon.webp' %}">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://mcqsolvear.com/terms">
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'app_icon.webp' %}">
+    <link rel="icon" type="image/webp" sizes="32x32" href="{% static 'app_icon.webp' %}">
+    <link rel="icon" type="image/webp" sizes="16x16" href="{% static 'app_icon.webp' %}">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <meta name="author" content="Solvear">
+    <meta name="theme-color" content="#4361ee">
+    
+    <!-- Structured Data / JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Terms of Service - MCQ Solvear",
+        "description": "Terms and conditions for using MCQ Solvear educational quiz application",
+        "url": "https://mcqsolvear.com/terms",
+        "datePublished": "2024-01-01",
+        "dateModified": "2024-01-01",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Solvear",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://mcqsolvear.com{% static 'app_icon.webp' %}"
+            }
+        },
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://mcqsolvear.com"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Terms of Service",
+                    "item": "https://mcqsolvear.com/terms"
+                }
+            ]
+        }
+    }
+    </script>
+    
+    <!-- CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary-color: #7209b7;
+            --accent-color: #f72585;
+            --text-color: #2b2d42;
+            --text-light: #8d99ae;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+        
+        .section-divider {
+            height: 3px;
+            width: 60px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+        
+        .breadcrumb {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 10px;
+            padding: 0.75rem 1rem;
+        }
+        
+        .legal-content {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .legal-section {
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .legal-section:last-child {
+            border-bottom: none;
+        }
+        
+        .update-badge {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            display: inline-block;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(67, 97, 238, 0.4);
+            background: var(--primary-dark);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        
+        .legal-highlight {
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.1), rgba(114, 9, 183, 0.1));
+            border-left: 4px solid var(--primary-color);
+            padding: 1rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1rem 0;
+        }
+        
+        .nav-link.active {
+            color: var(--primary-color);
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .nav-link.active::before {
+            content: '';
+            position: absolute;
+            left: -1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 70%;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+        
+        /* Print Styles */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            
+            .legal-content {
+                box-shadow: none !important;
+                border: 1px solid #ddd !important;
+            }
+        }
+        
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .legal-nav {
+                position: static !important;
+                width: 100% !important;
+            }
+            
+            .back-to-top {
+                bottom: 1rem;
+                right: 1rem;
+                width: 40px;
+                height: 40px;
+            }
+        }
+        
+        .scroll-spy {
+            scroll-margin-top: 100px;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-blue-50 min-h-screen">
+    <!-- Navigation -->
+    {% include 'partial/navbar.html' %}
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+       
+
+        <!-- Hero Section -->
+        <section class="py-12 bg-gradient-to-r from-blue-500 to-purple-600 text-white">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4 animate-fade-in">
+                        Terms of Service
+                    </h1>
+                    <p class="text-xl opacity-90 mb-4">
+                        Last updated: January 1, 2024
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-2 mb-6">
+                        <span class="update-badge bg-white/20 backdrop-blur-sm">
+                            <i class="fas fa-clock mr-1"></i> Updated: 2024
+                        </span>
+                        <span class="update-badge bg-white/20 backdrop-blur-sm">
+                            <i class="fas fa-file-contract mr-1"></i> Legal Document
+                        </span>
+                        <span class="update-badge bg-white/20 backdrop-blur-sm">
+                            <i class="fas fa-globe mr-1"></i> English Version
+                        </span>
+                    </div>
+                    <p class="text-lg max-w-3xl mx-auto opacity-80">
+                        Please read these Terms of Service carefully before using MCQ Solvear mobile application.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Terms Content -->
+        <section class="py-12 md:py-16">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col lg:flex-row gap-8 max-w-6xl mx-auto">
+                    <!-- Sidebar Navigation -->
+                    <div class="lg:w-1/4 no-print">
+                        <div class="legal-nav sticky top-32 bg-white rounded-xl shadow-lg p-6">
+                            <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
+                                <i class="fas fa-list-alt mr-2 text-primary-color"></i>
+                                Table of Contents
+                            </h3>
+                            <nav class="space-y-2">
+                                <a href="#introduction" class="nav-link block text-gray-600 hover:text-primary-color transition-colors py-2">
+                                    1. Introduction
+                                </a>
+                                <a href="#definitions" class="nav-link block text-gray-600 hover:text-primary-color transition-colors py-2">
+                                    2. Definitions
+                                </a>
+                                <a href="#acceptance" class="nav-link block text-gray-600 hover:text-primary-color transition-colors py-2">
+                                    3. Acceptance of Terms
+                                </a>
+                                <a href="#account" class="nav-link block text-gray-600 hover:text-primary-color transition-colors py-2">
+                                    4. User Accounts
+                                </a>
+                                <a href="#license" class="nav-link block text-gray-600 hover:text-primary-color transition-colors py-2">
+                                    5. License Grant
+                                </a>
+                                <a href="#content" class="nav-link block text-gray-600 hover:text-primary-color transition-colors py-2">
+                                    6. User Content
+                                </a>
+                                <a href="#conduct" class="nav-link block text-gray-600 hover:text-primary-color transition-colors py-2">
+                                    7. User Conduct
+                                </a>
+                                <a href="#intellectual-property" class="nav-link block text-gray-600 hover:text-primary-color transition-colors py-2">
+                                    8. Intellectual Property
+                                </a>
+                                <a href="#privacy" class="nav-link block text-gray-600 hover:text-primary-color transition-colors py-2">
+                                    9. Privacy Policy
+                                </a>
+                                <a href="#termination" class="nav-link block text-gray-600 hover:text-primary-color transition-colors py-2">
+                                    10. Termination
+                                </a>
+                                <a href="#disclaimer" class="nav-link block text-gray-600 hover:text-primary-color transition-colors py-2">
+                                    11. Disclaimer
+                                </a>
+                                <a href="#limitation" class="nav-link block text-gray-600 hover:text-primary-color transition-colors py-2">
+                                    12. Limitation of Liability
+                                </a>
+                                <a href="#indemnification" class="nav-link block text-gray-600 hover:text-primary-color transition-colors py-2">
+                                    13. Indemnification
+                                </a>
+                                <a href="#changes" class="nav-link block text-gray-600 hover:text-primary-color transition-colors py-2">
+                                    14. Changes to Terms
+                                </a>
+                                <a href="#governing-law" class="nav-link block text-gray-600 hover:text-primary-color transition-colors py-2">
+                                    15. Governing Law
+                                </a>
+                                <a href="#contact" class="nav-link block text-gray-600 hover:text-primary-color transition-colors py-2">
+                                    16. Contact Information
+                                </a>
+                            </nav>
+                            
+                            <div class="mt-6 pt-6 border-t border-gray-200">
+                                <a href="{% url 'privacy_policy' %}" class="flex items-center text-gray-600 hover:text-primary-color transition-colors">
+                                    <i class="fas fa-shield-alt mr-2"></i>
+                                    Privacy Policy
+                                </a>
+                                <a href="/" class="flex items-center text-gray-600 hover:text-primary-color transition-colors mt-2">
+                                    <i class="fas fa-home mr-2"></i>
+                                    Back to Home
+                                </a>
+                                <button onclick="window.print()" class="flex items-center text-gray-600 hover:text-primary-color transition-colors mt-2 w-full">
+                                    <i class="fas fa-print mr-2"></i>
+                                    Print Terms
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Main Content -->
+                    <div class="lg:w-3/4">
+                        <div class="legal-content p-6 md:p-8 animate-fade-in">
+                            <!-- Introduction -->
+                            <div id="introduction" class="legal-section mb-8 scroll-spy">
+                                <div class="flex items-center mb-4">
+                                    <span class="text-2xl font-bold text-primary-color mr-3">1</span>
+                                    <h2 class="text-2xl font-bold text-gray-800">Introduction</h2>
+                                </div>
+                                <div class="ml-10">
+                                    <p class="text-gray-600 mb-4">
+                                        Welcome to MCQ Solvear ("App", "we", "our", "us"). These Terms of Service ("Terms") govern your use of the MCQ Solvear mobile application and related services.
+                                    </p>
+                                    <p class="text-gray-600 mb-4">
+                                        MCQ Solvear is an educational quiz application designed to help users test and improve their knowledge across multiple categories through engaging multiple-choice questions.
+                                    </p>
+                                    <div class="legal-highlight">
+                                        <p class="text-gray-700 font-medium">
+                                            <i class="fas fa-info-circle text-primary-color mr-2"></i>
+                                            By downloading, installing, or using our App, you agree to be bound by these Terms. If you disagree with any part of the terms, you may not use our App.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Definitions -->
+                            <div id="definitions" class="legal-section mb-8 scroll-spy">
+                                <div class="flex items-center mb-4">
+                                    <span class="text-2xl font-bold text-primary-color mr-3">2</span>
+                                    <h2 class="text-2xl font-bold text-gray-800">Definitions</h2>
+                                </div>
+                                <div class="ml-10">
+                                    <ul class="list-disc pl-6 text-gray-600 space-y-2">
+                                        <li><strong>"App"</strong> refers to the MCQ Solvear mobile application available on Android platform.</li>
+                                        <li><strong>"User"</strong> or <strong>"You"</strong> refers to any individual who downloads, installs, or uses the App.</li>
+                                        <li><strong>"Content"</strong> refers to text, images, questions, answers, and other materials available through the App.</li>
+                                        <li><strong>"Account"</strong> refers to the user account created to access certain features of the App.</li>
+                                        <li><strong>"Services"</strong> refers to all features, functionality, and services provided through the App.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Acceptance of Terms -->
+                            <div id="acceptance" class="legal-section mb-8 scroll-spy">
+                                <div class="flex items-center mb-4">
+                                    <span class="text-2xl font-bold text-primary-color mr-3">3</span>
+                                    <h2 class="text-2xl font-bold text-gray-800">Acceptance of Terms</h2>
+                                </div>
+                                <div class="ml-10">
+                                    <p class="text-gray-600 mb-4">
+                                        By accessing or using the App, you acknowledge that you have read, understood, and agree to be bound by these Terms.
+                                    </p>
+                                    <p class="text-gray-600 mb-4">
+                                        You must be at least 13 years old to use the App. If you are under 18, you represent that you have your parent or guardian's permission to use the App.
+                                    </p>
+                                    <div class="legal-highlight">
+                                        <p class="text-gray-700 font-medium">
+                                            <i class="fas fa-exclamation-triangle text-yellow-500 mr-2"></i>
+                                            Continued use of the App following the posting of changes to these Terms will mean you accept those changes.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- User Accounts -->
+                            <div id="account" class="legal-section mb-8 scroll-spy">
+                                <div class="flex items-center mb-4">
+                                    <span class="text-2xl font-bold text-primary-color mr-3">4</span>
+                                    <h2 class="text-2xl font-bold text-gray-800">User Accounts</h2>
+                                </div>
+                                <div class="ml-10">
+                                    <p class="text-gray-600 mb-4">
+                                        To access certain features of the App, you may be required to create an account. You agree to:
+                                    </p>
+                                    <ul class="list-disc pl-6 text-gray-600 space-y-2 mb-4">
+                                        <li>Provide accurate, current, and complete information during registration</li>
+                                        <li>Maintain and promptly update your account information</li>
+                                        <li>Maintain the security of your password and accept all risks of unauthorized access</li>
+                                        <li>Notify us immediately if you discover or suspect any security breaches</li>
+                                        <li>Take responsibility for all activities that occur under your account</li>
+                                    </ul>
+                                    <p class="text-gray-600">
+                                        We reserve the right to suspend or terminate accounts that violate these Terms or are suspected of fraudulent activity.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- License Grant -->
+                            <div id="license" class="legal-section mb-8 scroll-spy">
+                                <div class="flex items-center mb-4">
+                                    <span class="text-2xl font-bold text-primary-color mr-3">5</span>
+                                    <h2 class="text-2xl font-bold text-gray-800">License Grant</h2>
+                                </div>
+                                <div class="ml-10">
+                                    <p class="text-gray-600 mb-4">
+                                        Subject to your compliance with these Terms, we grant you a limited, non-exclusive, non-transferable, revocable license to:
+                                    </p>
+                                    <ul class="list-disc pl-6 text-gray-600 space-y-2 mb-4">
+                                        <li>Download and install the App on Android devices that you own or control</li>
+                                        <li>Use the App for personal, non-commercial educational purposes</li>
+                                        <li>Access and use the Content provided through the App</li>
+                                    </ul>
+                                    <p class="text-gray-600">
+                                        This license does not include any right to: (a) sell, resell, or commercially use the App; (b) copy, modify, or create derivative works; (c) distribute, publicly perform, or publicly display the App.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- User Content -->
+                            <div id="content" class="legal-section mb-8 scroll-spy">
+                                <div class="flex items-center mb-4">
+                                    <span class="text-2xl font-bold text-primary-color mr-3">6</span>
+                                    <h2 class="text-2xl font-bold text-gray-800">User Content</h2>
+                                </div>
+                                <div class="ml-10">
+                                    <p class="text-gray-600 mb-4">
+                                        The App may allow you to submit content such as quiz scores, progress data, and feedback. By submitting content, you:
+                                    </p>
+                                    <ul class="list-disc pl-6 text-gray-600 space-y-2 mb-4">
+                                        <li>Grant us a worldwide, non-exclusive, royalty-free license to use, reproduce, and display such content</li>
+                                        <li>Represent that you have all necessary rights to submit the content</li>
+                                        <li>Agree that content will not violate any third-party rights or laws</li>
+                                    </ul>
+                                    <p class="text-gray-600">
+                                        We reserve the right to remove any content that violates these Terms or is otherwise objectionable.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- User Conduct -->
+                            <div id="conduct" class="legal-section mb-8 scroll-spy">
+                                <div class="flex items-center mb-4">
+                                    <span class="text-2xl font-bold text-primary-color mr-3">7</span>
+                                    <h2 class="text-2xl font-bold text-gray-800">User Conduct</h2>
+                                </div>
+                                <div class="ml-10">
+                                    <p class="text-gray-600 mb-4">
+                                        You agree not to engage in any of the following prohibited activities:
+                                    </p>
+                                    <ul class="list-disc pl-6 text-gray-600 space-y-2 mb-4">
+                                        <li>Using the App for any illegal purpose or in violation of any laws</li>
+                                        <li>Attempting to hack, crack, or reverse engineer the App</li>
+                                        <li>Using automated systems or bots to access the App</li>
+                                        <li>Interfering with or disrupting the App's security or functionality</li>
+                                        <li>Attempting to gain unauthorized access to other users' accounts</li>
+                                        <li>Harassing, bullying, or threatening other users</li>
+                                        <li>Uploading or transmitting viruses or malicious code</li>
+                                        <li>Collecting or harvesting user information without consent</li>
+                                    </ul>
+                                    <div class="legal-highlight">
+                                        <p class="text-gray-700 font-medium">
+                                            <i class="fas fa-ban text-red-500 mr-2"></i>
+                                            Violation of these conduct rules may result in immediate termination of your account and access to the App.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Intellectual Property -->
+                            <div id="intellectual-property" class="legal-section mb-8 scroll-spy">
+                                <div class="flex items-center mb-4">
+                                    <span class="text-2xl font-bold text-primary-color mr-3">8</span>
+                                    <h2 class="text-2xl font-bold text-gray-800">Intellectual Property</h2>
+                                </div>
+                                <div class="ml-10">
+                                    <p class="text-gray-600 mb-4">
+                                        The App and its original content, features, and functionality are owned by Solvear and are protected by international copyright, trademark, patent, trade secret, and other intellectual property laws.
+                                    </p>
+                                    <p class="text-gray-600 mb-4">
+                                        The MCQ Solvear name, logo, and related marks are trademarks of Solvear. You may not use these marks without our prior written permission.
+                                    </p>
+                                    <p class="text-gray-600">
+                                        Quiz questions and educational content may include material owned by third parties. Such content is used under license or as permitted by law.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Privacy Policy -->
+                            <div id="privacy" class="legal-section mb-8 scroll-spy">
+                                <div class="flex items-center mb-4">
+                                    <span class="text-2xl font-bold text-primary-color mr-3">9</span>
+                                    <h2 class="text-2xl font-bold text-gray-800">Privacy Policy</h2>
+                                </div>
+                                <div class="ml-10">
+                                    <p class="text-gray-600 mb-4">
+                                        Your privacy is important to us. Our Privacy Policy explains how we collect, use, and protect your personal information. By using the App, you agree to the collection and use of information in accordance with our Privacy Policy.
+                                    </p>
+                                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                                        <a href="{% url 'privacy_policy' %}" class="text-primary-color hover:text-primary-dark font-medium flex items-center">
+                                            <i class="fas fa-external-link-alt mr-2"></i>
+                                            Read our complete Privacy Policy
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Termination -->
+                            <div id="termination" class="legal-section mb-8 scroll-spy">
+                                <div class="flex items-center mb-4">
+                                    <span class="text-2xl font-bold text-primary-color mr-3">10</span>
+                                    <h2 class="text-2xl font-bold text-gray-800">Termination</h2>
+                                </div>
+                                <div class="ml-10">
+                                    <p class="text-gray-600 mb-4">
+                                        We may terminate or suspend your account and access to the App immediately, without prior notice or liability, for any reason, including if you breach these Terms.
+                                    </p>
+                                    <p class="text-gray-600 mb-4">
+                                        Upon termination, your right to use the App will immediately cease. If you wish to terminate your account, you may simply discontinue using the App or delete the App from your device.
+                                    </p>
+                                    <p class="text-gray-600">
+                                        All provisions of these Terms which by their nature should survive termination shall survive, including ownership provisions, warranty disclaimers, indemnity, and limitations of liability.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Disclaimer -->
+                            <div id="disclaimer" class="legal-section mb-8 scroll-spy">
+                                <div class="flex items-center mb-4">
+                                    <span class="text-2xl font-bold text-primary-color mr-3">11</span>
+                                    <h2 class="text-2xl font-bold text-gray-800">Disclaimer</h2>
+                                </div>
+                                <div class="ml-10">
+                                    <p class="text-gray-600 mb-4">
+                                        THE APP IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED. TO THE FULLEST EXTENT PERMISSIBLE PURSUANT TO APPLICABLE LAW, WE DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
+                                    </p>
+                                    <p class="text-gray-600 mb-4">
+                                        We do not warrant that:
+                                    </p>
+                                    <ul class="list-disc pl-6 text-gray-600 space-y-2 mb-4">
+                                        <li>The App will function uninterrupted, secure, or available at any particular time or location</li>
+                                        <li>Any errors or defects will be corrected</li>
+                                        <li>The App is free of viruses or other harmful components</li>
+                                        <li>The results of using the App will meet your requirements</li>
+                                        <li>The educational content is 100% accurate or complete</li>
+                                    </ul>
+                                    <p class="text-gray-600">
+                                        The App is for educational purposes only and should not be considered as professional advice.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Limitation of Liability -->
+                            <div id="limitation" class="legal-section mb-8 scroll-spy">
+                                <div class="flex items-center mb-4">
+                                    <span class="text-2xl font-bold text-primary-color mr-3">12</span>
+                                    <h2 class="text-2xl font-bold text-gray-800">Limitation of Liability</h2>
+                                </div>
+                                <div class="ml-10">
+                                    <p class="text-gray-600 mb-4">
+                                        TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL SOLVEAR, ITS DIRECTORS, EMPLOYEES, PARTNERS, AGENTS, SUPPLIERS, OR AFFILIATES BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING WITHOUT LIMITATION, LOSS OF PROFITS, DATA, USE, GOODWILL, OR OTHER INTANGIBLE LOSSES, RESULTING FROM:
+                                    </p>
+                                    <ul class="list-disc pl-6 text-gray-600 space-y-2 mb-4">
+                                        <li>Your access to or use of or inability to access or use the App</li>
+                                        <li>Any conduct or content of any third party on the App</li>
+                                        <li>Any content obtained from the App</li>
+                                        <li>Unauthorized access, use, or alteration of your transmissions or content</li>
+                                    </ul>
+                                    <p class="text-gray-600">
+                                        Our total liability for any claim arising out of or relating to these Terms or the App shall not exceed the amount you paid, if any, to use the App during the 12 months prior to the claim.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Indemnification -->
+                            <div id="indemnification" class="legal-section mb-8 scroll-spy">
+                                <div class="flex items-center mb-4">
+                                    <span class="text-2xl font-bold text-primary-color mr-3">13</span>
+                                    <h2 class="text-2xl font-bold text-gray-800">Indemnification</h2>
+                                </div>
+                                <div class="ml-10">
+                                    <p class="text-gray-600 mb-4">
+                                        You agree to defend, indemnify, and hold harmless Solvear and its licensee and licensors, and their employees, contractors, agents, officers, and directors, from and against any and all claims, damages, obligations, losses, liabilities, costs, or debt, and expenses (including but not limited to attorney's fees) resulting from or arising out of:
+                                    </p>
+                                    <ul class="list-disc pl-6 text-gray-600 space-y-2 mb-4">
+                                        <li>Your use and access of the App</li>
+                                        <li>Your violation of these Terms</li>
+                                        <li>Your violation of any third-party right, including without limitation any copyright, property, or privacy right</li>
+                                        <li>Any claim that your content caused damage to a third party</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Changes to Terms -->
+                            <div id="changes" class="legal-section mb-8 scroll-spy">
+                                <div class="flex items-center mb-4">
+                                    <span class="text-2xl font-bold text-primary-color mr-3">14</span>
+                                    <h2 class="text-2xl font-bold text-gray-800">Changes to Terms</h2>
+                                </div>
+                                <div class="ml-10">
+                                    <p class="text-gray-600 mb-4">
+                                        We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will provide at least 30 days' notice prior to any new terms taking effect.
+                                    </p>
+                                    <p class="text-gray-600 mb-4">
+                                        What constitutes a material change will be determined at our sole discretion. By continuing to access or use our App after any revisions become effective, you agree to be bound by the revised terms.
+                                    </p>
+                                    <div class="legal-highlight">
+                                        <p class="text-gray-700 font-medium">
+                                            <i class="fas fa-bell text-primary-color mr-2"></i>
+                                            We encourage you to review these Terms periodically for any changes. The "Last updated" date at the top of this page indicates when these Terms were last revised.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Governing Law -->
+                            <div id="governing-law" class="legal-section mb-8 scroll-spy">
+                                <div class="flex items-center mb-4">
+                                    <span class="text-2xl font-bold text-primary-color mr-3">15</span>
+                                    <h2 class="text-2xl font-bold text-gray-800">Governing Law</h2>
+                                </div>
+                                <div class="ml-10">
+                                    <p class="text-gray-600 mb-4">
+                                        These Terms shall be governed and construed in accordance with the laws of India, without regard to its conflict of law provisions.
+                                    </p>
+                                    <p class="text-gray-600">
+                                        Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights. If any provision of these Terms is held to be invalid or unenforceable by a court, the remaining provisions will remain in effect.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Contact Information -->
+                            <div id="contact" class="legal-section scroll-spy">
+                                <div class="flex items-center mb-4">
+                                    <span class="text-2xl font-bold text-primary-color mr-3">16</span>
+                                    <h2 class="text-2xl font-bold text-gray-800">Contact Information</h2>
+                                </div>
+                                <div class="ml-10">
+                                    <p class="text-gray-600 mb-6">
+                                        If you have any questions about these Terms, please contact us at:
+                                    </p>
+                                    <div class="bg-gray-50 rounded-xl p-6">
+                                        <div class="space-y-4">
+                                            <div class="flex items-start">
+                                                <i class="fas fa-envelope text-primary-color mt-1 mr-3"></i>
+                                                <div>
+                                                    <p class="font-medium text-gray-800">Email</p>
+                                                    <p class="text-gray-600">palashrangder05@gmail.com</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start">
+                                                <i class="fas fa-globe text-primary-color mt-1 mr-3"></i>
+                                                <div>
+                                                    <p class="font-medium text-gray-800">Website</p>
+                                                    <p class="text-gray-600">https://solvear.in/</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start">
+                                                <i class="fas fa-building text-primary-color mt-1 mr-3"></i>
+                                                <div>
+                                                    <p class="font-medium text-gray-800">Company</p>
+                                                    <p class="text-gray-600">Solvear</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 mt-6">
+                                        We typically respond to inquiries within 3-5 business days.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Agreement Section -->
+                            <div class="mt-12 pt-8 border-t border-gray-200">
+                                <div class="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-xl p-6">
+                                    <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                                        <i class="fas fa-handshake text-primary-color mr-2"></i>
+                                        Agreement to Terms
+                                    </h3>
+                                    <p class="text-gray-600 mb-4">
+                                        By using MCQ Solvear, you acknowledge that you have read these Terms of Service, understand them, and agree to be bound by them.
+                                    </p>
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <p class="text-sm text-gray-500">Last Updated: January 1, 2024</p>
+                                            <p class="text-sm text-gray-500">Effective Date: January 1, 2024</p>
+                                        </div>
+                                        <button onclick="window.print()" class="bg-primary-color text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition-colors flex items-center">
+                                            <i class="fas fa-print mr-2"></i>
+                                            Print Terms
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top no-print" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <!-- Footer -->
+    {% include 'partial/footer.html' %}
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        // Update active nav link
+                        updateActiveNavLink(this.getAttribute('href'));
+                    }
+                });
+            });
+
+            // Back to top functionality
+            const backToTop = document.querySelector('.back-to-top');
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTop.style.display = 'flex';
+                } else {
+                    backToTop.style.display = 'none';
+                }
+            });
+
+            // Print functionality
+            document.querySelectorAll('[onclick*="print"]').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.print();
+                });
+            });
+
+            // Update active navigation link based on scroll position
+            function updateActiveNavLink(hash) {
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                });
+                if (hash) {
+                    const activeLink = document.querySelector(`a[href="${hash}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                    }
+                }
+            }
+
+            // Intersection Observer for scroll-spy navigation
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.3
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        updateActiveNavLink('#' + entry.target.id);
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all scroll-spy sections
+            document.querySelectorAll('.scroll-spy').forEach(section => {
+                observer.observe(section);
+            });
+
+            // Initialize first active link
+            updateActiveNavLink('#introduction');
+        });
+    </script>
+</body>
+</html>

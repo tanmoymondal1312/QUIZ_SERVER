@@ -16,11 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from .views import home, privacyPolicy, Terms, DataSetection
 
 
 urlpatterns = [
+    path('', home, name='home'),
+
     path('admin/', admin.site.urls),
-    path('', include('view.urls')),
     path('accounts/', include('accounts.urls')),
     path('quiz/', include('app_quiz.urls')),
+
+
+
+    path('privacy-policy', privacyPolicy, name='privacy_policy'),
+    path('terms', Terms, name='terms_of_service'),
+    path('data-detection', DataSetection, name='data_detection'),
 ]

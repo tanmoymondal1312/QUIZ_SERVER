@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <!-- Essential Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCQ Solvear - Smart Learning Solutions | Educational Quiz App</title>
+    <meta name="description" content="MCQ Solvear: Educational quiz application for Android. Test and improve knowledge across geography, science, art, sports categories with instant feedback and progress tracking.">
+    <meta name="keywords" content="MCQ Solvear, quiz app, educational app, learning app, multiple choice questions, geography quiz, science quiz, Android app, Solvear">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="MCQ Solvear - Smart Learning Solutions">
+    <meta property="og:description" content="Educational quiz application to test and improve knowledge across multiple categories.">
+    <meta property="og:url" content="https://mcqsolvear.com">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="{% static 'app_icon.webp' %}">
+    <meta property="og:site_name" content="MCQ Solvear">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MCQ Solvear - Educational Quiz App">
+    <meta name="twitter:description" content="Smart learning through multiple choice questions across various categories.">
+    <meta name="twitter:image" content="{% static 'app_icon.webp' %}">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://mcqsolvear.com/">
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'app_icon.webp' %}">
+    <link rel="icon" type="image/webp" sizes="32x32" href="{% static 'app_icon.webp' %}">
+    <link rel="icon" type="image/webp" sizes="16x16" href="{% static 'app_icon.webp' %}">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="author" content="Solvear">
+    <meta name="theme-color" content="#4361ee">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" crossorigin>
+    
+    <!-- Structured Data / JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "MCQ Solvear",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Android",
+        "description": "Educational quiz application designed to help users test and improve their knowledge across multiple categories through engaging multiple-choice questions.",
+        "url": "https://mcqsolvear.com/",
+        "author": {
+            "@type": "Organization",
+            "name": "Solvear"
+        },
+        "datePublished": "2024-01-01",
+        "softwareVersion": "1.0",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": [
+            "User Authentication",
+            "Multiple Quiz Categories",
+            "Real-time Answer Validation",
+            "Score & Progress Tracking",
+            "Leaderboard System",
+            "Dark Theme Support"
+        ]
+    }
+    </script>
+    
+    <!-- CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary-color: #7209b7;
+            --accent-color: #f72585;
+            --text-color: #2b2d42;
+            --text-light: #8d99ae;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .animate-gradient {
+            background-size: 200% 200%;
+            animation: gradientFlow 4s ease infinite;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .stagger-animation > * {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .tech-tag {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            display: inline-block;
+        }
+        
+        .section-divider {
+            height: 3px;
+            width: 60px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+        
+        .category-icon {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid;
+        }
+        
+        .feature-card.auth {
+            border-left-color: #4361ee;
+        }
+        
+        .feature-card.quiz {
+            border-left-color: #7209b7;
+        }
+        
+        .feature-card.leaderboard {
+            border-left-color: #f72585;
+        }
+        
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .mobile-stack {
+                flex-direction: column;
+            }
+            
+            .mobile-center {
+                text-align: center;
+                justify-content: center;
+            }
+            
+            .mobile-padding {
+                padding: 1rem !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .mobile-padding {
+                padding: 1rem !important;
+            }
+        }
+        
+        .app-download-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            transition: all 0.3s ease;
+        }
+        
+        .app-download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(67, 97, 238, 0.4);
+        }
+        
+        .category-badge {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            display: inline-block;
+        }
+        
+        .quiz-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .quiz-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 25px rgba(67, 97, 238, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-blue-50 min-h-screen font-inter">
+    <!-- Navigation -->
+    {% include 'partial/navbar.html' %}
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section class="relative overflow-hidden bg-gradient-to-br from-blue-500 to-purple-600 text-white py-16 md:py-24">
+            <!-- Background Elements -->
+            <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+                <div class="absolute -top-20 -right-20 w-64 h-64 bg-white/10 rounded-full animate-float"></div>
+                <div class="absolute -bottom-16 -left-16 w-48 h-48 bg-white/10 rounded-full animate-float" style="animation-delay: 1.5s;"></div>
+            </div>
+            
+            <div class="container mx-auto px-4 text-center relative z-10">
+                <div class="flex flex-col md:flex-row items-center justify-center gap-8 max-w-6xl mx-auto">
+                    <div class="flex-1 text-left">
+                        <div class="inline-flex items-center gap-2 mb-4">
+                            <img src="{% static 'app_icon.webp' %}" alt="MCQ Solvear Logo" class="w-12 h-12 rounded-xl shadow-lg">
+                            <span class="tech-tag bg-white/20 backdrop-blur-sm text-white border border-white/30">
+                                <i class="fab fa-android mr-1" aria-hidden="true"></i> Android App
+                            </span>
+                        </div>
+                        
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black mb-6 animate-fade-in-up">
+                            MCQ Solvear
+                        </h1>
+                        <p class="text-xl md:text-2xl mb-6 opacity-90 leading-relaxed font-light">
+                            Smart Learning Through Quiz Challenges
+                        </p>
+                        <p class="text-lg mb-8 max-w-2xl opacity-80 leading-relaxed">
+                            An educational quiz application designed to help users test and improve their knowledge across multiple categories. 
+                            Engage in exciting multiple-choice questions with instant feedback and track your progress.
+                        </p>
+                        
+                        <div class="flex flex-col sm:flex-row gap-4 justify-start">
+                            <a href="#download" class="app-download-btn text-white px-8 py-3 rounded-xl font-semibold text-lg flex items-center justify-center gap-3 shadow-lg">
+                                <i class="fas fa-download" aria-hidden="true"></i> Download App
+                            </a>
+                            <a href="#features" class="bg-white/10 hover:bg-white/20 text-white border border-white/30 px-8 py-3 rounded-xl font-semibold text-lg transition-colors duration-300 flex items-center justify-center gap-3 backdrop-blur-sm">
+                                <i class="fas fa-play-circle" aria-hidden="true"></i> Explore Features
+                            </a>
+                        </div>
+                        
+                        <div class="flex items-center mt-8 text-white/80">
+                            <div class="flex items-center mr-4">
+                                <i class="fas fa-check-circle text-green-300 mr-2" aria-hidden="true"></i>
+                                <span>Secure Authentication</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-trophy text-yellow-300 mr-2" aria-hidden="true"></i>
+                                <span>Leaderboard System</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex-1 flex justify-center">
+                        <div class="relative w-64 h-96">
+                            <div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 rounded-3xl transform rotate-6"></div>
+                            <div class="absolute inset-0 bg-white rounded-3xl shadow-2xl p-4 transform -rotate-3">
+                                <div class="bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl p-4 text-white h-full">
+                                    <div class="flex items-center mb-4">
+                                        <img src="{% static 'app_icon.webp' %}" alt="App Icon" class="w-8 h-8 rounded-lg mr-2">
+                                        <span class="font-bold">MCQ Solvear</span>
+                                    </div>
+                                    <div class="space-y-3">
+                                        <div class="bg-white/20 rounded-lg p-3">
+                                            <div class="text-sm opacity-80">Geography Quiz</div>
+                                            <div class="text-lg font-bold">Capital of France?</div>
+                                            <div class="space-y-2 mt-2">
+                                                <div class="bg-white/30 rounded px-3 py-2 text-sm">A. London</div>
+                                                <div class="bg-green-400 rounded px-3 py-2 text-sm font-bold">B. Paris ✓</div>
+                                                <div class="bg-white/30 rounded px-3 py-2 text-sm">C. Berlin</div>
+                                                <div class="bg-white/30 rounded px-3 py-2 text-sm">D. Madrid</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- App Overview Section -->
+        <section class="py-16 md:py-20 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                        App Overview
+                    </h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto text-lg">
+                        Comprehensive educational platform with smart learning solutions
+                    </p>
+                    <div class="section-divider"></div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto items-center">
+                    <div>
+                        <div class="mb-6">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-3">🎯 App Purpose</h3>
+                            <p class="text-gray-600 leading-relaxed">
+                                MCQ Solvear is an educational quiz application designed to help users test and improve their knowledge across multiple categories. 
+                                The app provides an engaging way to learn through multiple-choice questions with instant feedback and progress tracking.
+                            </p>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4 mb-8">
+                            <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
+                                <div class="text-blue-600 font-bold text-lg mb-1">Java</div>
+                                <div class="text-gray-600 text-sm">Programming Language</div>
+                            </div>
+                            <div class="bg-purple-50 border border-purple-200 rounded-xl p-4">
+                                <div class="text-purple-600 font-bold text-lg mb-1">MVVM</div>
+                                <div class="text-gray-600 text-sm">Architecture</div>
+                            </div>
+                            <div class="bg-pink-50 border border-pink-200 rounded-xl p-4">
+                                <div class="text-pink-600 font-bold text-lg mb-1">Android 8.0+</div>
+                                <div class="text-gray-600 text-sm">Minimum Version</div>
+                            </div>
+                            <div class="bg-indigo-50 border border-indigo-200 rounded-xl p-4">
+                                <div class="text-indigo-600 font-bold text-lg mb-1">1.0</div>
+                                <div class="text-gray-600 text-sm">App Version</div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-xl p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3 flex items-center">
+                                <i class="fas fa-bullseye text-blue-500 mr-2" aria-hidden="true"></i>
+                                Learning Objectives
+                            </h3>
+                            <ul class="text-gray-700 space-y-2">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2" aria-hidden="true"></i>
+                                    <span>Test knowledge across diverse subjects</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2" aria-hidden="true"></i>
+                                    <span>Improve retention through practice</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2" aria-hidden="true"></i>
+                                    <span>Track progress and identify weak areas</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2" aria-hidden="true"></i>
+                                    <span>Compete with global learners</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl p-8 text-white">
+                        <h3 class="text-2xl font-bold mb-6">Technical Specifications</h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center">
+                                <span>App Name</span>
+                                <span class="font-bold">MCQ Solvear</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span>Package ID</span>
+                                <span class="font-bold">com.solvear.mcqsolvear</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span>Version</span>
+                                <span class="font-bold">1.0 (versionCode: 1)</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span>Min Android</span>
+                                <span class="font-bold">Android 8.0 (API 26)</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span>Target Android</span>
+                                <span class="font-bold">Android 15 (API 35)</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span>Language</span>
+                                <span class="font-bold">Java</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span>Architecture</span>
+                                <span class="font-bold">MVVM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Features Section -->
+        <section id="features" class="py-16 md:py-20 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                        ✨ Key Features
+                    </h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto text-lg">
+                        Comprehensive features designed for effective learning and engagement
+                    </p>
+                    <div class="section-divider"></div>
+                </div>
+                
+                <div class="max-w-6xl mx-auto space-y-8 stagger-animation">
+                    <!-- User Authentication -->
+                    <div class="feature-card auth">
+                        <div class="flex items-center mb-6">
+                            <div class="category-icon">
+                                <i class="fas fa-lock text-white text-2xl" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800 ml-4">🔐 User Authentication</h3>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <h4 class="font-bold text-gray-800 mb-2 flex items-center">
+                                    <i class="fas fa-user-plus text-blue-500 mr-2" aria-hidden="true"></i>
+                                    User Registration
+                                </h4>
+                                <p class="text-gray-600 text-sm">Secure registration with email validation for account creation</p>
+                            </div>
+                            
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <h4 class="font-bold text-gray-800 mb-2 flex items-center">
+                                    <i class="fas fa-sign-in-alt text-green-500 mr-2" aria-hidden="true"></i>
+                                    Secure Login
+                                </h4>
+                                <p class="text-gray-600 text-sm">Token-based authentication with encrypted session storage</p>
+                            </div>
+                            
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <h4 class="font-bold text-gray-800 mb-2 flex items-center">
+                                    <i class="fas fa-shield-alt text-purple-500 mr-2" aria-hidden="true"></i>
+                                    Encryption
+                                </h4>
+                                <p class="text-gray-600 text-sm">Enhanced security with encrypted data storage</p>
+                            </div>
+                            
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <h4 class="font-bold text-gray-800 mb-2 flex items-center">
+                                    <i class="fas fa-sign-out-alt text-red-500 mr-2" aria-hidden="true"></i>
+                                    Secure Logout
+                                </h4>
+                                <p class="text-gray-600 text-sm">Safe session termination and data clearing</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Quiz Categories -->
+                    <div class="feature-card quiz">
+                        <div class="flex items-center mb-6">
+                            <div class="category-icon">
+                                <i class="fas fa-book text-white text-2xl" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800 ml-4">📚 Quiz Categories</h3>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                            <div class="quiz-card">
+                                <div class="flex items-center mb-3">
+                                    <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
+                                        <i class="fas fa-globe-americas text-blue-600" aria-hidden="true"></i>
+                                    </div>
+                                    <h4 class="font-bold text-gray-800">🌍 Geography</h4>
+                                </div>
+                                <p class="text-gray-600 text-sm">Explore the world through geographical knowledge</p>
+                            </div>
+                            
+                            <div class="quiz-card">
+                                <div class="flex items-center mb-3">
+                                    <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mr-3">
+                                        <i class="fas fa-flask text-purple-600" aria-hidden="true"></i>
+                                    </div>
+                                    <h4 class="font-bold text-gray-800">🔬 Science</h4>
+                                </div>
+                                <p class="text-gray-600 text-sm">Discover how things work in the scientific world</p>
+                            </div>
+                            
+                            <div class="quiz-card">
+                                <div class="flex items-center mb-3">
+                                    <div class="w-10 h-10 bg-pink-100 rounded-lg flex items-center justify-center mr-3">
+                                        <i class="fas fa-palette text-pink-600" aria-hidden="true"></i>
+                                    </div>
+                                    <h4 class="font-bold text-gray-800">🎨 Art & Culture</h4>
+                                </div>
+                                <p class="text-gray-600 text-sm">Explore history, arts, and cultural knowledge</p>
+                            </div>
+                            
+                            <div class="quiz-card">
+                                <div class="flex items-center mb-3">
+                                    <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-3">
+                                        <i class="fas fa-futbol text-green-600" aria-hidden="true"></i>
+                                    </div>
+                                    <h4 class="font-bold text-gray-800">⚽ Sports</h4>
+                                </div>
+                                <p class="text-gray-600 text-sm">Test your knowledge of sports trivia</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Quiz Features -->
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <div class="flex items-center mb-6">
+                            <div class="category-icon">
+                                <i class="fas fa-gamepad text-white text-2xl" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800 ml-4">🎮 Quiz Features</h3>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-lg mr-4">
+                                    <i class="fas fa-check-circle text-blue-600 text-xl" aria-hidden="true"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 mb-2">Multiple Choice Questions</h4>
+                                    <p class="text-gray-600 text-sm">Each question with 4 options for comprehensive testing</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-green-100 p-3 rounded-lg mr-4">
+                                    <i class="fas fa-bolt text-green-600 text-xl" aria-hidden="true"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 mb-2">Real-time Validation</h4>
+                                    <p class="text-gray-600 text-sm">Instant feedback on answer selection</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-purple-100 p-3 rounded-lg mr-4">
+                                    <i class="fas fa-chart-line text-purple-600 text-xl" aria-hidden="true"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 mb-2">Progress Tracking</h4>
+                                    <p class="text-gray-600 text-sm">Monitor scores and improvement over time</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-pink-100 p-3 rounded-lg mr-4">
+                                    <i class="fas fa-file-alt text-pink-600 text-xl" aria-hidden="true"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 mb-2">Detailed Summary</h4>
+                                    <p class="text-gray-600 text-sm">Comprehensive quiz completion reports</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Leaderboard & Profile -->
+                    <div class="feature-card leaderboard">
+                        <div class="flex items-center mb-6">
+                            <div class="category-icon">
+                                <i class="fas fa-trophy text-white text-2xl" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800 ml-4">🏆 Leaderboard & Profile</h3>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl p-6 text-white">
+                                <h4 class="font-bold text-lg mb-3 flex items-center">
+                                    <i class="fas fa-globe mr-2" aria-hidden="true"></i>
+                                    Global Rankings
+                                </h4>
+                                <p class="text-white/90 text-sm">Compete with learners worldwide and see your position on global leaderboards</p>
+                            </div>
+                            
+                            <div class="bg-gradient-to-r from-purple-500 to-pink-600 rounded-xl p-6 text-white">
+                                <h4 class="font-bold text-lg mb-3 flex items-center">
+                                    <i class="fas fa-chart-bar mr-2" aria-hidden="true"></i>
+                                    Personal Statistics
+                                </h4>
+                                <p class="text-white/90 text-sm">Track performance metrics, accuracy rates, and learning progress</p>
+                            </div>
+                            
+                            <div class="bg-gradient-to-r from-pink-500 to-red-600 rounded-xl p-6 text-white">
+                                <h4 class="font-bold text-lg mb-3 flex items-center">
+                                    <i class="fas fa-level-up-alt mr-2" aria-hidden="true"></i>
+                                    Level Progression
+                                </h4>
+                                <p class="text-white/90 text-sm">Advance through difficulty levels as your knowledge expands</p>
+                            </div>
+                            
+                            <div class="bg-gradient-to-r from-green-500 to-teal-600 rounded-xl p-6 text-white">
+                                <h4 class="font-bold text-lg mb-3 flex items-center">
+                                    <i class="fas fa-award mr-2" aria-hidden="true"></i>
+                                    Achievement Tracking
+                                </h4>
+                                <p class="text-white/90 text-sm">Unlock badges and achievements for completing challenges</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Screenshots Section -->
+        <!-- Screenshots Section -->
+        <section class="py-16 md:py-20 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                        📱 App Screenshots
+                    </h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto text-lg">
+                        Experience the clean, intuitive interface of MCQ Solvear
+                    </p>
+                    <div class="section-divider"></div>
+                </div>
+                
+                <div class="max-w-6xl mx-auto">
+                    <!-- Screenshots Gallery -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                        <!-- Screenshot 1 -->
+                        <div class="relative group">
+                            <div class="relative overflow-hidden rounded-2xl shadow-xl transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-2xl">
+                                <div class="bg-gradient-to-br from-blue-100 to-purple-100 p-4 h-96 flex items-center justify-center">
+                                    <div class="relative w-full h-full flex items-center justify-center">
+                                        <img src="{% static 'ss1.webp' %}" 
+                                            alt="MCQ Solvear Home Screen" 
+                                            class="max-w-full max-h-full object-contain rounded-lg shadow-md"
+                                            loading="lazy"
+                                            onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjQyNyIgdmlld0JveD0iMCAwIDI0MCA0MjciIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjI0MCIgaGVpZ2h0PSI0MjciIGZpbGw9IiNFNUU4RkYiIHJ4PSIxMiIvPjxwYXRoIGQ9Ik04MCAxNzJIMTYwVjIzMkg4MFYxNzJaTTQwIDI3MkgyMjBWMzMySDQwVjI3MlpNMTIwIDcySDE4MFYxMzJIMTIwVjcyWiIgZmlsbD0iIzQzNjFFRSIvPjwvc3ZnPg==';">
+                                    </div>
+                                </div>
+                                <!-- Overlay effect -->
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl flex items-end">
+                                    <div class="p-6 w-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                        <div class="bg-white/90 backdrop-blur-sm rounded-lg p-3">
+                                            <span class="text-sm font-semibold text-gray-800">Home Dashboard</span>
+                                            <p class="text-xs text-gray-600 mt-1">Clean interface with category selection</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Screenshot 2 -->
+                        <div class="relative group">
+                            <div class="relative overflow-hidden rounded-2xl shadow-xl transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-2xl">
+                                <div class="bg-gradient-to-br from-green-100 to-teal-100 p-4 h-96 flex items-center justify-center">
+                                    <div class="relative w-full h-full flex items-center justify-center">
+                                        <img src="{% static 'ss2.webp' %}" 
+                                            alt="MCQ Solvear Quiz Interface" 
+                                            class="max-w-full max-h-full object-contain rounded-lg shadow-md"
+                                            loading="lazy"
+                                            onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjQyNyIgdmlld0JveD0iMCAwIDI0MCA0MjciIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjI0MCIgaGVpZ2h0PSI0MjciIGZpbGw9IiNFMEY0RTEiIHJ4PSIxMiIvPjxwYXRoIGQ9Ik02MCAxMjBDNjAgMTA3LjIgNzAuMTk1IDk2LjUgODIuNSA5Ni41SDE1Ny41QzE2OS44MDUgOTYuNSAxODAgMTA3LjIgMTgwIDEyMEMxODAgMTMyLjggMTY5LjgwNSAxNDMuNSAxNTcuNSAxNDMuNUg4Mi41QzcwLjE5NSAxNDMuNSA2MCAxMzIuOCA2MCAxMjBaTTYwIDIxN0M2MCAyMDQuMiA3MC4xOTUgMTkzLjUgODIuNSAxOTMuNUgxNTcuNUMxNjkuODA1IDE5My41IDE4MCAyMDQuMiAxODAgMjE3QzE4MCAyMjkuOCAxNjkuODA1IDI0MC41IDE1Ny41IDI0MC41SDgyLjVDNzAuMTk1IDI0MC41IDYwIDIyOS44IDYwIDIxN1pNNDAgMzE0QzQwIDMwMS4yIDUwLjE5NSAyOTAuNSA2Mi41IDI5MC41SDE3Ny41QzE4OS44MDUgMjkwLjUgMjAwIDMwMS4yIDIwMCAzMTRDMjAwIDMyNi44IDE4OS44MDUgMzM3LjUgMTc3LjUgMzM3LjVINjIuNUM1MC4xOTUgMzM3LjUgNDAgMzI2LjggNDAgMzE0WiIgZmlsbD0iIzEwQjQ4NiIvPjwvc3ZnPg==';">
+                                    </div>
+                                </div>
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl flex items-end">
+                                    <div class="p-6 w-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                        <div class="bg-white/90 backdrop-blur-sm rounded-lg p-3">
+                                            <span class="text-sm font-semibold text-gray-800">Global Leaderboard</span>
+                                            <p class="text-xs text-gray-600 mt-1">Competitive rankings with scores</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Screenshot 3 -->
+                        <div class="relative group">
+                            <div class="relative overflow-hidden rounded-2xl shadow-xl transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-2xl">
+                                <div class="bg-gradient-to-br from-purple-100 to-pink-100 p-4 h-96 flex items-center justify-center">
+                                    <div class="relative w-full h-full flex items-center justify-center">
+                                        <img src="{% static 'ss3.webp' %}" 
+                                            alt="MCQ Solvear Leaderboard" 
+                                            class="max-w-full max-h-full object-contain rounded-lg shadow-md"
+                                            loading="lazy"
+                                            onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjQyNyIgdmlld0JveD0iMCAwIDI0MCA0MjciIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjI0MCIgaGVpZ2h0PSI0MjciIGZpbGw9IiNGMEU4RjYiIHJ4PSIxMiIvPjxwYXRoIGQ9Ik02MCAxNTJIMTgwVjE3Mkg2MFYxNTJaTTQwIDE5MkgyMjBWMjEySDQwVjE5MlpNODAgMjMySDE2MFYyNTJIODBWMjMyWk01MCAxMTJINzBWMzMySDUwVjExMlpNMTcwIDExMkgxOTBWMzMySDE3MFYxMTJaIiBmaWxsPSIjNzIwOUI3Ii8+PC9zdmc+';">
+                                    </div>
+                                </div>
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl flex items-end">
+                                    <div class="p-6 w-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                        <div class="bg-white/90 backdrop-blur-sm rounded-lg p-3">
+                                            <span class="text-sm font-semibold text-gray-800">Profile Section</span>
+                                            <p class="text-xs text-gray-600 mt-1">See your profile and achievements</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Screenshot 4 -->
+                        <div class="relative group">
+                            <div class="relative overflow-hidden rounded-2xl shadow-xl transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-2xl">
+                                <div class="bg-gradient-to-br from-orange-100 to-red-100 p-4 h-96 flex items-center justify-center">
+                                    <div class="relative w-full h-full flex items-center justify-center">
+                                        <img src="{% static 'ss4.webp' %}" 
+                                            alt="MCQ Solvear Progress Tracking" 
+                                            class="max-w-full max-h-full object-contain rounded-lg shadow-md"
+                                            loading="lazy"
+                                            onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjQyNyIgdmlld0JveD0iMCAwIDI0MCA0MjciIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjI0MCIgaGVpZ2h0PSI0MjciIGZpbGw9IiNGRkZFOUUiIHJ4PSIxMiIvPjxwYXRoIGQ9Ik00MCAxNzZIMjAwVjIyNEg0MFYxNzZaTTYwIDk2SDE4MFYxNDRINjBWOTZaTTEwMCAyNTZIMTIwVjMzNkgxMDBWMjU2Wk0xMzAgMjU2SDE1MFYyOTZIMTMwVjI1NlpNMTYwIDI1NkgxODBWMjc2SDE2MFYyNTZaIiBmaWxsPSIjRjcyNTg1Ii8+PHBhdGggZD0iTTQwIDE3NkwyMCAxOTZWNzZINDBWMTc2WiIgZmlsbD0iIzQzNjFFRSIvPjxwYXRoIGQ9Ik0yMDAgMTc2TDIyMCAxOTZWNzZIMjAwVjE3NloiIGZpbGw9IiM3MjA5QjciLz48L3N2Zz4=';">
+                                    </div>
+                                </div>
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl flex items-end">
+                                    <div class="p-6 w-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                        <div class="bg-white/90 backdrop-blur-sm rounded-lg p-3">
+                                            <span class="text-sm font-semibold text-gray-800">Progress Analytics</span>
+                                            <p class="text-xs text-gray-600 mt-1">Detailed performance insights</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Screenshot 5 -->
+                        <div class="relative group">
+                            <div class="relative overflow-hidden rounded-2xl shadow-xl transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-2xl">
+                                <div class="bg-gradient-to-br from-indigo-100 to-blue-100 p-4 h-96 flex items-center justify-center">
+                                    <div class="relative w-full h-full flex items-center justify-center">
+                                        <img src="{% static 'ss5.webp' %}" 
+                                            alt="MCQ Solvear User Profile" 
+                                            class="max-w-full max-h-full object-contain rounded-lg shadow-md"
+                                            loading="lazy"
+                                            onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjQyNyIgdmlld0JveD0iMCAwIDI0MCA0MjciIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjI0MCIgaGVpZ2h0PSI0MjciIGZpbGw9IiNFMEVCRkYiIHJ4PSIxMiIvPjxjaXJjbGUgY3g9IjEyMCIgY3k9IjEyMCIgcj0iNDAiIGZpbGw9IiM0MzYxRUUiLz48cGF0aCBkPSJNMTIwIDE4MEMxNTMuMTM3IDE4MCAxODAgMTUzLjEzNyAxODAgMTIwQzE4MCA4Ni44NjIgMTUzLjEzNyA2MCAxMjAgNjBDODYuODYyIDYwIDYwIDg2Ljg2MiA2MCAxMjBDNjAgMTUzLjEzNyA4Ni44NjIgMTgwIDEyMCAxODBaTTYwIDI1MkgxODBWMzMySDYwVjI1MloiIGZpbGw9IiM0MzYxRUUiLz48L3N2Zz4=';">
+                                    </div>
+                                </div>
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl flex items-end">
+                                    <div class="p-6 w-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                        <div class="bg-white/90 backdrop-blur-sm rounded-lg p-3">
+                                            <span class="text-sm font-semibold text-gray-800">Active Quiz</span>
+                                            <p class="text-xs text-gray-600 mt-1">Interactive question with 4 options</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Screenshot 6 -->
+                        <div class="relative group">
+                            <div class="relative overflow-hidden rounded-2xl shadow-xl transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-2xl">
+                                <div class="bg-gradient-to-br from-gray-100 to-blue-50 p-4 h-96 flex items-center justify-center">
+                                    <div class="bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl w-full h-full flex flex-col items-center justify-center p-8 text-white text-center">
+                                        <i class="fas fa-plus-circle text-4xl mb-4 opacity-90"></i>
+                                        <h3 class="text-xl font-bold mb-2">More Features</h3>
+                                        <p class="opacity-80 mb-4">Explore additional screens in the app</p>
+                                        <div class="flex flex-wrap gap-2 justify-center">
+                                            <span class="bg-white/20 px-3 py-1 rounded-full text-sm">Settings</span>
+                                            <span class="bg-white/20 px-3 py-1 rounded-full text-sm">Categories</span>
+                                            <span class="bg-white/20 px-3 py-1 rounded-full text-sm">History</span>
+                                            <span class="bg-white/20 px-3 py-1 rounded-full text-sm">Achievements</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl flex items-end">
+                                    <div class="p-6 w-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                        <div class="bg-white/90 backdrop-blur-sm rounded-lg p-3">
+                                            <span class="text-sm font-semibold text-gray-800">More Features</span>
+                                            <p class="text-xs text-gray-600 mt-1">Additional screens and functionality</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Screenshot Navigation Indicators -->
+                    <div class="flex justify-center items-center space-x-4 mb-8">
+                        <button class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 transition-all duration-300 flex items-center justify-center shadow-md hover:shadow-lg" aria-label="Previous screenshot">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-2 bg-blue-600 rounded-full transition-all duration-300"></div>
+                            <div class="w-2 h-2 bg-gray-300 rounded-full hover:bg-gray-400 transition-colors duration-300"></div>
+                            <div class="w-2 h-2 bg-gray-300 rounded-full hover:bg-gray-400 transition-colors duration-300"></div>
+                            <div class="w-2 h-2 bg-gray-300 rounded-full hover:bg-gray-400 transition-colors duration-300"></div>
+                            <div class="w-2 h-2 bg-gray-300 rounded-full hover:bg-gray-400 transition-colors duration-300"></div>
+                            <div class="w-2 h-2 bg-gray-300 rounded-full hover:bg-gray-400 transition-colors duration-300"></div>
+                        </div>
+                        
+                        <button class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 transition-all duration-300 flex items-center justify-center shadow-md hover:shadow-lg" aria-label="Next screenshot">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    
+                    <!-- App Features Highlight -->
+                    <div class="mt-16 bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-2xl p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Key UI Features</h3>
+                        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div class="text-center group">
+                                <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300">
+                                    <i class="fas fa-eye text-blue-600 text-xl"></i>
+                                </div>
+                                <h4 class="font-bold text-gray-800 mb-2">Clean Design</h4>
+                                <p class="text-gray-600 text-sm">Minimalistic interface for focused learning</p>
+                            </div>
+                            
+                            <div class="text-center group">
+                                <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300">
+                                    <i class="fas fa-tap text-purple-600 text-xl"></i>
+                                </div>
+                                <h4 class="font-bold text-gray-800 mb-2">Intuitive Navigation</h4>
+                                <p class="text-gray-600 text-sm">Easy access to all features and categories</p>
+                            </div>
+                            
+                            <div class="text-center group">
+                                <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300">
+                                    <i class="fas fa-palette text-green-600 text-xl"></i>
+                                </div>
+                                <h4 class="font-bold text-gray-800 mb-2">Material Design</h4>
+                                <p class="text-gray-600 text-sm">Follows Android design guidelines</p>
+                            </div>
+                            
+                            <div class="text-center group">
+                                <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300">
+                                    <i class="fas fa-bolt text-red-600 text-xl"></i>
+                                </div>
+                                <h4 class="font-bold text-gray-800 mb-2">Fast Performance</h4>
+                                <p class="text-gray-600 text-sm">Smooth animations and quick loading</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Libraries & Technologies Section -->
+        <section class="py-16 md:py-20 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                        📦 Libraries & Technologies
+                    </h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto text-lg">
+                        Built with modern Android development tools and best practices
+                    </p>
+                    <div class="section-divider"></div>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                    <!-- Library Cards -->
+                    <div class="bg-gray-50 border border-gray-200 rounded-xl p-6 text-center card-hover">
+                        <div class="text-blue-600 text-3xl mb-3">
+                            <i class="fas fa-exchange-alt" aria-hidden="true"></i>
+                        </div>
+                        <h4 class="font-bold text-gray-800 mb-2">Retrofit</h4>
+                        <p class="text-gray-600 text-sm">HTTP client for API calls</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 border border-gray-200 rounded-xl p-6 text-center card-hover">
+                        <div class="text-purple-600 text-3xl mb-3">
+                            <i class="fas fa-code" aria-hidden="true"></i>
+                        </div>
+                        <h4 class="font-bold text-gray-800 mb-2">Gson</h4>
+                        <p class="text-gray-600 text-sm">JSON parsing</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 border border-gray-200 rounded-xl p-6 text-center card-hover">
+                        <div class="text-green-600 text-3xl mb-3">
+                            <i class="fas fa-wifi" aria-hidden="true"></i>
+                        </div>
+                        <h4 class="font-bold text-gray-800 mb-2">OkHttp</h4>
+                        <p class="text-gray-600 text-sm">HTTP interceptor & logging</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 border border-gray-200 rounded-xl p-6 text-center card-hover">
+                        <div class="text-pink-600 text-3xl mb-3">
+                            <i class="fas fa-directions" aria-hidden="true"></i>
+                        </div>
+                        <h4 class="font-bold text-gray-800 mb-2">Navigation</h4>
+                        <p class="text-gray-600 text-sm">Screen navigation</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 border border-gray-200 rounded-xl p-6 text-center card-hover">
+                        <div class="text-red-600 text-3xl mb-3">
+                            <i class="fas fa-database" aria-hidden="true"></i>
+                        </div>
+                        <h4 class="font-bold text-gray-800 mb-2">LiveData</h4>
+                        <p class="text-gray-600 text-sm">Lifecycle-aware data</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 border border-gray-200 rounded-xl p-6 text-center card-hover">
+                        <div class="text-indigo-600 text-3xl mb-3">
+                            <i class="fas fa-eye" aria-hidden="true"></i>
+                        </div>
+                        <h4 class="font-bold text-gray-800 mb-2">ViewBinding</h4>
+                        <p class="text-gray-600 text-sm">Type-safe view access</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 border border-gray-200 rounded-xl p-6 text-center card-hover">
+                        <div class="text-teal-600 text-3xl mb-3">
+                            <i class="fas fa-paint-brush" aria-hidden="true"></i>
+                        </div>
+                        <h4 class="font-bold text-gray-800 mb-2">Material Design 3</h4>
+                        <p class="text-gray-600 text-sm">UI components</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 border border-gray-200 rounded-xl p-6 text-center card-hover">
+                        <div class="text-yellow-600 text-3xl mb-3">
+                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                        </div>
+                        <h4 class="font-bold text-gray-800 mb-2">AndroidX Security</h4>
+                        <p class="text-gray-600 text-sm">Encrypted storage</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- UI/UX Features Section -->
+        <section class="py-16 md:py-20 bg-gradient-to-br from-blue-50 to-purple-50">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                        🎨 UI/UX Features
+                    </h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto text-lg">
+                        Modern design with user-friendly experience
+                    </p>
+                    <div class="section-divider"></div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <!-- Feature 1 -->
+                    <div class="bg-white rounded-2xl p-6 shadow-lg card-hover">
+                        <div class="w-12 h-12 bg-gray-900 rounded-xl flex items-center justify-center mb-4">
+                            <i class="fas fa-moon text-white text-xl" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Dark Theme</h3>
+                        <p class="text-gray-600">
+                            Modern dark color scheme for comfortable learning sessions, day or night
+                        </p>
+                    </div>
+                    
+                    <!-- Feature 2 -->
+                    <div class="bg-white rounded-2xl p-6 shadow-lg card-hover">
+                        <div class="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center mb-4">
+                            <i class="fas fa-palette text-white text-xl" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Material Design 3</h3>
+                        <p class="text-gray-600">
+                            Latest Android design guidelines for a polished, modern interface
+                        </p>
+                    </div>
+                    
+                    <!-- Feature 3 -->
+                    <div class="bg-white rounded-2xl p-6 shadow-lg card-hover">
+                        <div class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center mb-4">
+                            <i class="fas fa-sync-alt text-white text-xl" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Smooth Animations</h3>
+                        <p class="text-gray-600">
+                            Fluid transition animations for enhanced user experience
+                        </p>
+                    </div>
+                    
+                    <!-- Feature 4 -->
+                    <div class="bg-white rounded-2xl p-6 shadow-lg card-hover">
+                        <div class="w-12 h-12 bg-pink-500 rounded-xl flex items-center justify-center mb-4">
+                            <i class="fas fa-spinner text-white text-xl" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Loading States</h3>
+                        <p class="text-gray-600">
+                            Shimmer placeholders during data loading for seamless experience
+                        </p>
+                    </div>
+                    
+                    <!-- Feature 5 -->
+                    <div class="bg-white rounded-2xl p-6 shadow-lg card-hover">
+                        <div class="w-12 h-12 bg-red-500 rounded-xl flex items-center justify-center mb-4">
+                            <i class="fas fa-exclamation-triangle text-white text-xl" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Error Handling</h3>
+                        <p class="text-gray-600">
+                            User-friendly error messages with clear resolution steps
+                        </p>
+                    </div>
+                    
+                    <!-- Feature 6 -->
+                    <div class="bg-white rounded-2xl p-6 shadow-lg card-hover">
+                        <div class="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center mb-4">
+                            <i class="fas fa-columns text-white text-xl" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Responsive Layout</h3>
+                        <p class="text-gray-600">
+                            Adapts beautifully to different screen sizes and orientations
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Download Section -->
+        <section id="download" class="py-16 md:py-20 bg-gradient-to-br from-blue-600 to-purple-700 text-white">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Start Your Learning Journey</h2>
+                    <p class="text-xl mb-8 max-w-2xl mx-auto opacity-90">
+                        Download MCQ Solvear today and transform your learning experience with interactive quizzes
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
+                        <a href="#" class="bg-white text-gray-800 hover:bg-gray-100 px-8 py-4 rounded-xl font-bold text-lg transition-colors duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl">
+                            <i class="fab fa-google-play text-2xl text-green-500" aria-hidden="true"></i>
+                            <div class="text-left">
+                                <div class="text-xs text-gray-600">GET IT ON</div>
+                                <div class="text-xl">Google Play</div>
+                            </div>
+                        </a>
+                        
+                        <a href="#" class="bg-white/10 hover:bg-white/20 text-white border border-white/30 px-8 py-4 rounded-xl font-bold text-lg transition-colors duration-300 flex items-center justify-center gap-3 backdrop-blur-sm">
+                            <i class="fas fa-download text-2xl" aria-hidden="true"></i>
+                            <div class="text-left">
+                                <div class="text-xs opacity-80">DIRECT</div>
+                                <div class="text-xl">Download APK</div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 max-w-2xl mx-auto">
+                        <h3 class="text-xl font-bold mb-4">System Requirements</h3>
+                        <div class="grid md:grid-cols-2 gap-4 text-left">
+                            <div class="flex items-center">
+                                <i class="fab fa-android text-green-400 mr-3 text-xl" aria-hidden="true"></i>
+                                <span>Android 8.0 (API 26) or higher</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-mobile-alt text-blue-400 mr-3 text-xl" aria-hidden="true"></i>
+                                <span>50MB free space</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-wifi text-yellow-400 mr-3 text-xl" aria-hidden="true"></i>
+                                <span>Internet for authentication</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-brain text-purple-400 mr-3 text-xl" aria-hidden="true"></i>
+                                <span>Curiosity to learn!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="py-16 md:py-20 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                            Frequently Asked Questions
+                        </h2>
+                        <p class="text-gray-600 max-w-2xl mx-auto text-lg">
+                            Find answers to common questions about MCQ Solvear
+                        </p>
+                        <div class="section-divider"></div>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-white rounded-2xl p-6 shadow-lg">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3 flex items-start">
+                                <i class="fas fa-question-circle text-blue-500 mr-3 mt-1" aria-hidden="true"></i>
+                                Is MCQ Solvear completely free to use?
+                            </h3>
+                            <p class="text-gray-600 pl-9">
+                                Yes, MCQ Solvear is completely free to download and use. All quiz categories, features, and updates are available at no cost.
+                            </p>
+                        </div>
+                        
+                        <div class="bg-white rounded-2xl p-6 shadow-lg">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3 flex items-start">
+                                <i class="fas fa-question-circle text-blue-500 mr-3 mt-1" aria-hidden="true"></i>
+                                Can I use the app offline?
+                            </h3>
+                            <p class="text-gray-600 pl-9">
+                                You need an internet connection for initial authentication and to download quiz categories. Once downloaded, you can practice quizzes offline.
+                            </p>
+                        </div>
+                        
+                        <div class="bg-white rounded-2xl p-6 shadow-lg">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3 flex items-start">
+                                <i class="fas fa-question-circle text-blue-500 mr-3 mt-1" aria-hidden="true"></i>
+                                How often are new questions added?
+                            </h3>
+                            <p class="text-gray-600 pl-9">
+                                We regularly update our question database with new quizzes across all categories. Updates are pushed through app updates.
+                            </p>
+                        </div>
+                        
+                        <div class="bg-white rounded-2xl p-6 shadow-lg">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3 flex items-start">
+                                <i class="fas fa-question-circle text-blue-500 mr-3 mt-1" aria-hidden="true"></i>
+                                Is my progress saved if I change devices?
+                            </h3>
+                            <p class="text-gray-600 pl-9">
+                                Yes, your progress is synchronized with your account. Simply log in on your new device to continue where you left off.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Company Info Section -->
+        <section class="py-16 md:py-20 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">About Solvear</h2>
+                    <div class="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-2xl p-8 mb-8">
+                        <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+                            <div class="text-left">
+                                <h3 class="text-2xl font-bold text-gray-800 mb-4">Company Information</h3>
+                                <div class="space-y-3">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-building text-blue-500 mr-3 text-xl" aria-hidden="true"></i>
+                                        <div>
+                                            <div class="font-semibold">Company Name</div>
+                                            <div class="text-gray-600">Solvear</div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-envelope text-blue-500 mr-3 text-xl" aria-hidden="true"></i>
+                                        <div>
+                                            <div class="font-semibold">Admin Email</div>
+                                            <div class="text-gray-600">palashrangder05@gmail.com</div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-globe text-blue-500 mr-3 text-xl" aria-hidden="true"></i>
+                                        <div>
+                                            <div class="font-semibold">Domain</div>
+                                            <div class="text-gray-600">https://solvear.in/</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl p-6 text-white">
+                                <h4 class="text-xl font-bold mb-4">Our Mission</h4>
+                                <p class="opacity-90">
+                                    To make learning engaging and accessible through technology, helping users expand their knowledge in an interactive and enjoyable way.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section class="py-16 md:py-20">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Ready to Challenge Your Knowledge?</h2>
+                    <p class="text-gray-600 text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
+                        Join thousands of learners who are expanding their knowledge with MCQ Solvear. Download now and start your learning journey!
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="#download" class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-3 rounded-xl font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                            <i class="fab fa-android" aria-hidden="true"></i> Download Now
+                        </a>
+                        <a href="{% url 'privacy_policy' %}" class="bg-white hover:bg-gray-50 text-blue-500 border border-blue-500 px-8 py-3 rounded-xl font-semibold text-lg transition-colors duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl">
+                            <i class="fas fa-shield-alt" aria-hidden="true"></i> Privacy Policy
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    {% include 'partial/footer.html' %}
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Performance: Use requestAnimationFrame for animations
+            function staggerAnimation() {
+                const staggerElements = document.querySelectorAll('.stagger-animation > *');
+                staggerElements.forEach((el, index) => {
+                    el.style.animationDelay = `${index * 0.15}s`;
+                    el.style.animation = 'fadeInUp 0.6s ease-out forwards';
+                });
+            }
+            
+            requestAnimationFrame(staggerAnimation);
+            
+            // Smooth scroll with performance optimization
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // Intersection Observer for animations
+            const observerOptions = {
+                threshold: 0.05,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe elements
+            document.querySelectorAll('.animate-fade-in-up').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'all 0.6s ease-out';
+                observer.observe(el);
+            });
+            
+            // Add floating effect to quiz cards on hover
+            document.querySelectorAll('.quiz-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

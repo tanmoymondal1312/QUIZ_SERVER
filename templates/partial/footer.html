@@ -1,0 +1,543 @@
+{% load static %}
+<footer class="footer">
+    <div class="footer-container">
+        <!-- Footer Main Content -->
+        <div class="footer-main">
+            <!-- Brand Section -->
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <img src="{% static 'app_icon.webp' %}" alt="MCQ Solvear Logo" width="48" height="48" loading="lazy">
+                    <div class="footer-brand-info">
+                        <h3 class="footer-brand-name">MCQ Solvear</h3>
+                        <p class="footer-tagline">Smart Learning Solutions</p>
+                    </div>
+                </div>
+                <p class="footer-description">
+                    An educational quiz application designed to help users test and improve their knowledge 
+                    across multiple categories through engaging multiple-choice questions.
+                </p>
+                <div class="footer-contact">
+                    <p><i class="fas fa-building"></i> Company: Solvear</p>
+                    <p><i class="fas fa-envelope"></i> Admin: palashrangder05@gmail.com</p>
+                    <p><i class="fas fa-globe"></i> Domain: solvear.in</p>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-links">
+                <h4 class="footer-title">Quick Links</h4>
+                <ul class="footer-link-list">
+                    <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="{% url 'privacy_policy' %}"><i class="fas fa-user-shield"></i> Privacy Policy</a></li>
+                    <li><a href="{% url 'terms_of_service' %}"><i class="fas fa-file-contract"></i> Terms of Service</a></li>
+                    <li><a href="{% url 'data_detection' %}"><i class="fas fa-database"></i> Data Deletion Request</a></li>
+                </ul>
+            </div>
+
+            <!-- App Features -->
+            <div class="footer-features">
+                <h4 class="footer-title">App Features</h4>
+                <ul class="footer-feature-list">
+                    <li><i class="fas fa-key"></i> User Authentication</li>
+                    <li><i class="fas fa-book"></i> Multiple Quiz Categories</li>
+                    <li><i class="fas fa-gamepad"></i> Real-time Quiz Features</li>
+                    <li><i class="fas fa-trophy"></i> Leaderboard & Profile</li>
+                    <li><i class="fas fa-palette"></i> Dark Theme & Animations</li>
+                </ul>
+            </div>
+
+            <!-- App Info -->
+            <div class="footer-app-info">
+                <h4 class="footer-title">App Information</h4>
+                <div class="app-details">
+                    <p><strong>Package ID:</strong> com.solvear.mcqsolvear</p>
+                    <p><strong>Version:</strong> 1.0 (versionCode: 1)</p>
+                    <p><strong>Minimum Android:</strong> Android 8.0 (API 26)</p>
+                    <p><strong>Target Android:</strong> Android 15 (API 35)</p>
+                    <p><strong>Language:</strong> Java</p>
+                    <p><strong>Architecture:</strong> MVVM</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <div class="footer-copyright">
+                <p>&copy; <span id="currentYear"></span> Solvear. All rights reserved.</p>
+                <p class="disclaimer">
+                    MCQ Solvear is an educational application. All quiz content is for learning purposes only.
+                </p>
+            </div>
+            
+            <div class="footer-social">
+                <a href="mailto:palashrangder05@gmail.com" class="social-link" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://solvear.in" class="social-link" aria-label="Website" target="_blank" rel="noopener">
+                    <i class="fas fa-globe"></i>
+                </a>
+                <a href="#" class="social-link" aria-label="Google Play">
+                    <i class="fab fa-google-play"></i>
+                </a>
+                <a href="#" class="social-link" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Libraries Credit -->
+        <div class="footer-libraries">
+            <h5 class="libraries-title">Powered By</h5>
+            <div class="libraries-list">
+                <span class="library-tag">Retrofit</span>
+                <span class="library-tag">Gson</span>
+                <span class="library-tag">OkHttp</span>
+                <span class="library-tag">Material Design 3</span>
+                <span class="library-tag">LiveData</span>
+                <span class="library-tag">Navigation</span>
+                <span class="library-tag">Shimmer</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<style>
+    /* Footer Styles */
+    .footer {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        color: #fff;
+        padding: 4rem 5% 2rem;
+        margin-top: auto;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .footer::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+    }
+
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Footer Main Layout */
+    .footer-main {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 3rem;
+        margin-bottom: 3rem;
+        padding-bottom: 3rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Brand Section */
+    .footer-brand {
+        grid-column: span 2;
+    }
+
+    .footer-logo {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .footer-logo img {
+        width: 60px;
+        height: 60px;
+        border-radius: var(--radius);
+        border: 2px solid var(--primary-color);
+        padding: 4px;
+        background: white;
+    }
+
+    .footer-brand-info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .footer-brand-name {
+        font-size: 1.8rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, #4361ee, #7209b7);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin: 0 0 0.25rem 0;
+    }
+
+    .footer-tagline {
+        color: #8d99ae;
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    .footer-description {
+        color: #b0b7c7;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        max-width: 400px;
+    }
+
+    .footer-contact {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 1rem;
+        border-radius: var(--radius);
+        border-left: 4px solid var(--primary-color);
+    }
+
+    .footer-contact p {
+        margin: 0.5rem 0;
+        color: #b0b7c7;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .footer-contact i {
+        color: var(--primary-color);
+        width: 20px;
+    }
+
+    /* Links & Features */
+    .footer-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        color: white;
+        position: relative;
+        padding-bottom: 0.5rem;
+    }
+
+    .footer-title::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 40px;
+        height: 3px;
+        background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+        border-radius: 2px;
+    }
+
+    .footer-link-list,
+    .footer-feature-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-link-list li,
+    .footer-feature-list li {
+        margin-bottom: 0.75rem;
+    }
+
+    .footer-link-list a {
+        color: #b0b7c7;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        transition: var(--transition);
+        padding: 0.5rem;
+        border-radius: 6px;
+    }
+
+    .footer-link-list a:hover {
+        color: white;
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateX(5px);
+    }
+
+    .footer-link-list i {
+        color: var(--primary-color);
+        width: 20px;
+    }
+
+    .footer-feature-list li {
+        color: #b0b7c7;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.5rem;
+        border-radius: 6px;
+        transition: var(--transition);
+    }
+
+    .footer-feature-list li:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: white;
+    }
+
+    .footer-feature-list i {
+        color: var(--accent-color);
+        width: 20px;
+    }
+
+    /* App Info */
+    .app-details {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 1.25rem;
+        border-radius: var(--radius);
+    }
+
+    .app-details p {
+        margin: 0.5rem 0;
+        color: #b0b7c7;
+        font-size: 0.9rem;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .app-details strong {
+        color: white;
+        font-weight: 600;
+        margin-right: 1rem;
+    }
+
+    /* Footer Bottom */
+    .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    .footer-copyright {
+        flex: 1;
+        min-width: 300px;
+    }
+
+    .footer-copyright p {
+        color: #8d99ae;
+        margin: 0.5rem 0;
+    }
+
+    .disclaimer {
+        font-size: 0.85rem;
+        color: #6c757d !important;
+        font-style: italic;
+        margin-top: 1rem !important;
+    }
+
+    /* Social Links */
+    .footer-social {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .social-link {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-decoration: none;
+        transition: var(--transition);
+        border: 2px solid transparent;
+    }
+
+    .social-link:hover {
+        background: var(--primary-color);
+        transform: translateY(-3px);
+        border-color: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 5px 15px rgba(67, 97, 238, 0.4);
+    }
+
+    .social-link i {
+        font-size: 1.2rem;
+    }
+
+    /* Libraries Section */
+    .footer-libraries {
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .libraries-title {
+        color: #8d99ae;
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    .libraries-list {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .library-tag {
+        background: rgba(255, 255, 255, 0.08);
+        color: #b0b7c7;
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        transition: var(--transition);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .library-tag:hover {
+        background: rgba(67, 97, 238, 0.2);
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+        .footer-main {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+        
+        .footer-brand {
+            grid-column: span 2;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .footer {
+            padding: 3rem 3% 1.5rem;
+        }
+        
+        .footer-main {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        .footer-brand {
+            grid-column: span 1;
+        }
+        
+        .footer-bottom {
+            flex-direction: column;
+            text-align: center;
+            gap: 1.5rem;
+        }
+        
+        .footer-copyright {
+            min-width: auto;
+        }
+        
+        .libraries-list {
+            justify-content: center;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .footer {
+            padding: 2rem 2% 1rem;
+        }
+        
+        .footer-logo {
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        .footer-brand-info {
+            align-items: center;
+        }
+        
+        .footer-description {
+            text-align: center;
+        }
+        
+        .app-details p {
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        
+        .footer-social {
+            justify-content: center;
+        }
+    }
+
+    /* Animation */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .footer > * {
+        animation: fadeInUp 0.6s ease forwards;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set current year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Add animation to library tags on hover
+        const libraryTags = document.querySelectorAll('.library-tag');
+        libraryTags.forEach(tag => {
+            tag.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px) scale(1.05)';
+            });
+            
+            tag.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+        
+        // Smooth scroll to top for footer links
+        const footerLinks = document.querySelectorAll('.footer-link-list a');
+        footerLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+        
+        // Add subtle background animation
+        const footer = document.querySelector('.footer');
+        let mouseX = 0, mouseY = 0;
+        
+        footer.addEventListener('mousemove', function(e) {
+            mouseX = (e.clientX / window.innerWidth) * 100;
+            mouseY = (e.clientY / window.innerHeight) * 100;
+            
+            this.style.background = `
+                radial-gradient(circle at ${mouseX}% ${mouseY}%, 
+                rgba(67, 97, 238, 0.1) 0%,
+                rgba(26, 26, 46, 0.95) 70%),
+                linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)
+            `;
+        });
+    });
+</script>
