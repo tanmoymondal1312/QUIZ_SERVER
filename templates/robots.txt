@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /quiz/api/
+Disallow: /accounts/api/
+
+Sitemap: https://www.mcqsolvear.com/sitemap.xml

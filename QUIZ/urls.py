@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from .views import home, privacyPolicy, Terms, DataSetection
+from django.views.generic import TemplateView
+
 
 
 urlpatterns = [
@@ -26,9 +28,20 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('quiz/', include('app_quiz.urls')),
 
-
-
     path('privacy-policy', privacyPolicy, name='privacy_policy'),
     path('terms', Terms, name='terms_of_service'),
     path('data-detection', DataSetection, name='data_detection'),
+
+    path(
+        "sitemap.xml",
+        TemplateView.as_view(
+            template_name="sitemap.xml",
+            content_type="application/xml"
+        ),
+        name="sitemap"
+    ),
+    path(
+        "robots.txt",
+        TemplateView.as_view(template_name="robots.txt", content_type="text/plain"),
+    ),
 ]
